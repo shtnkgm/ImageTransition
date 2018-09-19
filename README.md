@@ -11,26 +11,26 @@ Something looks like below:
 
 > Todo: sample image
 
-# Installation
+## Installation
 
-## Carthage
+### Carthage
 
 ```ruby
 github "shtnkgm/ImageTransition"
 ```
 
-## CocoaPods
+### CocoaPods
 
 > Todo: how to install with cocoapods
 
-# Usage
+## Usage
 
 > Todo: usage here
 
-# Author
+## Author
 
  - [@shtnkgm](https://github.com/shtnkgm) / Shota Nakagami
 
-# License
+## License
 
 ImageTransition is released under the MIT license. See [LICENSE](https://github.com/shtnkgm/ImageTransition/blob/master/LICENSE) for details.
