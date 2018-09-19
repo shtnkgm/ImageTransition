@@ -20,7 +20,32 @@ Something looks like below:
 
 ## Usage
 
-> :construction:Todo: usage here
+ - Import ImageTransition in Source and Destination View Controllers
+```swift
+import ImageTransition
+```
+ - Confirm `ImageTransitionable` protocol in Source and Destination View Controllers
+```swift
+extension SourceViewController: ImageTransitionable {
+    var imageViewForTransition: UIImageView? {
+        return imageView
+    }
+}
+
+extension DestinationViewController: ImageTransitionable {
+    var imageViewForTransition: UIImageView? {
+        return imageView
+    }
+}
+```
+ - Set ImageTransitionDelegate.shared to `transitioningDelegate` property of Destination View Controller
+```
+    @objc private func imageViewDidTapped() {
+        let destinationViewController = DestinationViewController.make()
+        destinationViewController.transitioningDelegate = ImageTransitionDelegate.shared
+        present(destinationViewController, animated: true, completion: nil)
+    }
+```
 
 ## Requirements
 
