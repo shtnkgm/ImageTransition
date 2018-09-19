@@ -8,8 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		DA5486EF21525AEB00E0899D /* ImageTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5486E521525AEB00E0899D /* ImageTransition.framework */; };
-		DA5486F421525AEB00E0899D /* ImageTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5486F321525AEB00E0899D /* ImageTransitionTests.swift */; };
 		DA5486F621525AEB00E0899D /* ImageTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = DA5486E821525AEB00E0899D /* ImageTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA548700215263A900E0899D /* ImageTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5486FF215263A900E0899D /* ImageTransitioning.swift */; };
+		DA548702215263B400E0899D /* ImageTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA548701215263B400E0899D /* ImageTransitionDelegate.swift */; };
+		DA548704215263BE00E0899D /* ImageTransitionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA548703215263BE00E0899D /* ImageTransitionable.swift */; };
+		DA548706215263C800E0899D /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA548705215263C800E0899D /* UIImageView+.swift */; };
+		DA548708215263DB00E0899D /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA548707215263DB00E0899D /* UIView+.swift */; };
+		DA54870A215263E500E0899D /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA548709215263E500E0899D /* UIImage+.swift */; };
+		DA54870C2152644400E0899D /* UIImageView+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54870B2152644400E0899D /* UIImageView+Tests.swift */; };
+		DA54870E2152644D00E0899D /* UIView+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54870D2152644D00E0899D /* UIView+Tests.swift */; };
+		DA5487102152646000E0899D /* ImageTransitionDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54870F2152646000E0899D /* ImageTransitionDelegateTests.swift */; };
+		DA5487122152646A00E0899D /* ImageTransitionAnimatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5487112152646A00E0899D /* ImageTransitionAnimatorTests.swift */; };
+		DA548714215264A800E0899D /* UIImage+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA548713215264A800E0899D /* UIImage+Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +37,18 @@
 		DA5486E821525AEB00E0899D /* ImageTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageTransition.h; sourceTree = "<group>"; };
 		DA5486E921525AEB00E0899D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5486EE21525AEB00E0899D /* ImageTransitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageTransitionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA5486F321525AEB00E0899D /* ImageTransitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionTests.swift; sourceTree = "<group>"; };
 		DA5486F521525AEB00E0899D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA5486FF215263A900E0899D /* ImageTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitioning.swift; sourceTree = "<group>"; };
+		DA548701215263B400E0899D /* ImageTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionDelegate.swift; sourceTree = "<group>"; };
+		DA548703215263BE00E0899D /* ImageTransitionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionable.swift; sourceTree = "<group>"; };
+		DA548705215263C800E0899D /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		DA548707215263DB00E0899D /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		DA548709215263E500E0899D /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		DA54870B2152644400E0899D /* UIImageView+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tests.swift"; sourceTree = "<group>"; };
+		DA54870D2152644D00E0899D /* UIView+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Tests.swift"; sourceTree = "<group>"; };
+		DA54870F2152646000E0899D /* ImageTransitionDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionDelegateTests.swift; sourceTree = "<group>"; };
+		DA5487112152646A00E0899D /* ImageTransitionAnimatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionAnimatorTests.swift; sourceTree = "<group>"; };
+		DA548713215264A800E0899D /* UIImage+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Tests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +92,12 @@
 			isa = PBXGroup;
 			children = (
 				DA5486E821525AEB00E0899D /* ImageTransition.h */,
+				DA5486FF215263A900E0899D /* ImageTransitioning.swift */,
+				DA548701215263B400E0899D /* ImageTransitionDelegate.swift */,
+				DA548703215263BE00E0899D /* ImageTransitionable.swift */,
+				DA548705215263C800E0899D /* UIImageView+.swift */,
+				DA548707215263DB00E0899D /* UIView+.swift */,
+				DA548709215263E500E0899D /* UIImage+.swift */,
 				DA5486E921525AEB00E0899D /* Info.plist */,
 			);
 			path = ImageTransition;
@@ -80,7 +106,11 @@
 		DA5486F221525AEB00E0899D /* ImageTransitionTests */ = {
 			isa = PBXGroup;
 			children = (
-				DA5486F321525AEB00E0899D /* ImageTransitionTests.swift */,
+				DA54870B2152644400E0899D /* UIImageView+Tests.swift */,
+				DA54870D2152644D00E0899D /* UIView+Tests.swift */,
+				DA548713215264A800E0899D /* UIImage+Tests.swift */,
+				DA54870F2152646000E0899D /* ImageTransitionDelegateTests.swift */,
+				DA5487112152646A00E0899D /* ImageTransitionAnimatorTests.swift */,
 				DA5486F521525AEB00E0899D /* Info.plist */,
 			);
 			path = ImageTransitionTests;
@@ -148,6 +178,7 @@
 				TargetAttributes = {
 					DA5486E421525AEB00E0899D = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					DA5486ED21525AEB00E0899D = {
 						CreatedOnToolsVersion = 10.0;
@@ -194,6 +225,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA548706215263C800E0899D /* UIImageView+.swift in Sources */,
+				DA548700215263A900E0899D /* ImageTransitioning.swift in Sources */,
+				DA548704215263BE00E0899D /* ImageTransitionable.swift in Sources */,
+				DA54870A215263E500E0899D /* UIImage+.swift in Sources */,
+				DA548702215263B400E0899D /* ImageTransitionDelegate.swift in Sources */,
+				DA548708215263DB00E0899D /* UIView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA5486F421525AEB00E0899D /* ImageTransitionTests.swift in Sources */,
+				DA54870C2152644400E0899D /* UIImageView+Tests.swift in Sources */,
+				DA5487122152646A00E0899D /* ImageTransitionAnimatorTests.swift in Sources */,
+				DA54870E2152644D00E0899D /* UIView+Tests.swift in Sources */,
+				DA5487102152646000E0899D /* ImageTransitionDelegateTests.swift in Sources */,
+				DA548714215264A800E0899D /* UIImage+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +382,7 @@
 		DA5486FA21525AEB00E0899D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -350,6 +392,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ImageTransition/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shotanakagami.ImageTransition;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +410,7 @@
 		DA5486FB21525AEB00E0899D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -375,6 +420,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ImageTransition/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +437,7 @@
 		DA5486FD21525AEB00E0899D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8U533Y3X82;
 				INFOPLIST_FILE = ImageTransitionTests/Info.plist;
@@ -409,6 +456,7 @@
 		DA5486FE21525AEB00E0899D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8U533Y3X82;
 				INFOPLIST_FILE = ImageTransitionTests/Info.plist;
