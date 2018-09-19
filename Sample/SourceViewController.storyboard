@@ -18,15 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountain" translatesAutoresizingMaskIntoConstraints="NO" id="Nn6-cg-p9H">
-                                <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruit" translatesAutoresizingMaskIntoConstraints="NO" id="Nn6-cg-p9H">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Hym-n2-PP1"/>
-                                    <constraint firstAttribute="width" constant="300" id="qoN-Rj-P5w"/>
+                                    <constraint firstAttribute="width" constant="200" id="qoN-Rj-P5w"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nn6-cg-p9H" firstAttribute="centerY" secondItem="ncH-Yt-Owo" secondAttribute="centerY" id="naY-AC-bI1"/>
                             <constraint firstItem="Nn6-cg-p9H" firstAttribute="centerX" secondItem="ncH-Yt-Owo" secondAttribute="centerX" id="uO7-jO-iRD"/>
@@ -43,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mountain" width="1280" height="623"/>
+        <image name="fruit" width="2304" height="1536"/>
     </resources>
 </document>

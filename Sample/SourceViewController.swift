@@ -15,6 +15,9 @@ final class SourceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView.layer.cornerRadius = 20
+        imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewDidTapped))
         imageView.addGestureRecognizer(tapGestureRecognizer)
     }

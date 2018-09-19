@@ -18,23 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountain" translatesAutoresizingMaskIntoConstraints="NO" id="nOF-j9-Bw8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit Tart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LA1-VL-x2G">
+                                <rect key="frame" x="16" y="409" width="343" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="Vvy-m5-JF8"/>
+                                    <constraint firstAttribute="height" constant="50" id="8kB-PA-pav"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mhr-00-Eeb">
+                                <rect key="frame" x="16" y="467" width="343" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="3tG-70-aIm"/>
+                                </constraints>
+                                <string key="text">Every season's fruit is attractive to each, and when you look at the harvested fruit you just get excited just to imagine "How delicious it would be if you make this a cake!"</string>
+                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruit" translatesAutoresizingMaskIntoConstraints="NO" id="tlw-fs-jqX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="401"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nOF-j9-Bw8" firstAttribute="trailing" secondItem="bvo-r2-uXS" secondAttribute="trailing" id="0jF-H1-kmo"/>
-                            <constraint firstItem="nOF-j9-Bw8" firstAttribute="top" secondItem="f10-4z-4n8" secondAttribute="top" id="MgM-2t-iCI"/>
-                            <constraint firstItem="nOF-j9-Bw8" firstAttribute="leading" secondItem="bvo-r2-uXS" secondAttribute="leading" id="cfl-LR-1TS"/>
+                            <constraint firstItem="bvo-r2-uXS" firstAttribute="trailing" secondItem="LA1-VL-x2G" secondAttribute="trailing" constant="16" id="5Uh-tj-NiV"/>
+                            <constraint firstItem="tlw-fs-jqX" firstAttribute="leading" secondItem="bvo-r2-uXS" secondAttribute="leading" id="Afr-5v-bWM"/>
+                            <constraint firstItem="bvo-r2-uXS" firstAttribute="bottom" secondItem="mhr-00-Eeb" secondAttribute="bottom" constant="80" id="Jb5-r2-jin"/>
+                            <constraint firstItem="mhr-00-Eeb" firstAttribute="leading" secondItem="bvo-r2-uXS" secondAttribute="leading" constant="16" id="Jpa-8o-a9n"/>
+                            <constraint firstItem="tlw-fs-jqX" firstAttribute="trailing" secondItem="bvo-r2-uXS" secondAttribute="trailing" id="Ne0-fv-ivZ"/>
+                            <constraint firstItem="bvo-r2-uXS" firstAttribute="trailing" secondItem="mhr-00-Eeb" secondAttribute="trailing" constant="16" id="Ucx-0v-Jis"/>
+                            <constraint firstItem="LA1-VL-x2G" firstAttribute="top" secondItem="tlw-fs-jqX" secondAttribute="bottom" constant="8" id="Upy-rS-fAi"/>
+                            <constraint firstItem="tlw-fs-jqX" firstAttribute="top" secondItem="f10-4z-4n8" secondAttribute="top" id="XVn-Wq-h5h"/>
+                            <constraint firstItem="mhr-00-Eeb" firstAttribute="top" secondItem="LA1-VL-x2G" secondAttribute="bottom" constant="8" id="dWU-rp-Hwg"/>
+                            <constraint firstItem="LA1-VL-x2G" firstAttribute="leading" secondItem="bvo-r2-uXS" secondAttribute="leading" constant="16" id="z1d-m2-gnS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bvo-r2-uXS"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="nOF-j9-Bw8" id="MpY-4H-Dms"/>
+                        <outlet property="imageView" destination="tlw-fs-jqX" id="KPE-GA-wRC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgh-TU-FJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,6 +66,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mountain" width="1280" height="623"/>
+        <image name="fruit" width="2304" height="1536"/>
     </resources>
 </document>

@@ -15,6 +15,7 @@ final class DestinationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView.isUserInteractionEnabled = true
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewDidTapped))
         imageView.addGestureRecognizer(tapGestureRecognizer)
     }
