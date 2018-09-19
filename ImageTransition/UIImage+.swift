@@ -12,9 +12,8 @@ internal extension UIImage {
     internal var area: CGFloat {
         return size.width * size.height
     }
-    
+
     internal func largerCompared(with comparedImage: UIImage) -> UIImage {
         return area > comparedImage.area ? self : comparedImage
     }
 }
-
