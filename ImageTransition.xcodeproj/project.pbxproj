@@ -27,10 +27,18 @@
 		DA8EAFC22152AECD00BC5968 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8EAFC02152AECD00BC5968 /* DestinationViewController.swift */; };
 		DA8EAFC52152AF4000BC5968 /* SourceViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA8EAFC42152AF4000BC5968 /* SourceViewController.storyboard */; };
 		DA8EAFC72152AF5400BC5968 /* DestinationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA8EAFC62152AF5400BC5968 /* DestinationViewController.storyboard */; };
+		DA8EAFC92152B0A700BC5968 /* ImageTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5486E521525AEB00E0899D /* ImageTransition.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		DA5486F021525AEB00E0899D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA5486DC21525AEB00E0899D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA5486E421525AEB00E0899D;
+			remoteInfo = ImageTransition;
+		};
+		DA8EAFCA2152B0CA00BC5968 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DA5486DC21525AEB00E0899D /* Project object */;
 			proxyType = 1;
@@ -87,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8EAFC92152B0A700BC5968 /* ImageTransition.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +109,7 @@
 				DA5486F221525AEB00E0899D /* ImageTransitionTests */,
 				DA54871A215266AB00E0899D /* Sample */,
 				DA5486E621525AEB00E0899D /* Products */,
+				DA8EAFC82152B0A700BC5968 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +164,13 @@
 				DA548727215266AC00E0899D /* Info.plist */,
 			);
 			path = Sample;
+			sourceTree = "<group>";
+		};
+		DA8EAFC82152B0A700BC5968 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +235,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA8EAFCB2152B0CA00BC5968 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -358,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = DA5486E421525AEB00E0899D /* ImageTransition */;
 			targetProxy = DA5486F021525AEB00E0899D /* PBXContainerItemProxy */;
+		};
+		DA8EAFCB2152B0CA00BC5968 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA5486E421525AEB00E0899D /* ImageTransition */;
+			targetProxy = DA8EAFCA2152B0CA00BC5968 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

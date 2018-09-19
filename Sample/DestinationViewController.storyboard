@@ -17,13 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="f10-4z-4n8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountain" translatesAutoresizingMaskIntoConstraints="NO" id="nOF-j9-Bw8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Vvy-m5-JF8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nOF-j9-Bw8" firstAttribute="trailing" secondItem="bvo-r2-uXS" secondAttribute="trailing" id="0jF-H1-kmo"/>
+                            <constraint firstItem="nOF-j9-Bw8" firstAttribute="top" secondItem="f10-4z-4n8" secondAttribute="top" id="MgM-2t-iCI"/>
+                            <constraint firstItem="nOF-j9-Bw8" firstAttribute="leading" secondItem="bvo-r2-uXS" secondAttribute="leading" id="cfl-LR-1TS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bvo-r2-uXS"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="nOF-j9-Bw8" id="MpY-4H-Dms"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgh-TU-FJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="78"/>
+            <point key="canvasLocation" x="29.600000000000001" y="77.811094452773617"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mountain" width="1280" height="623"/>
+    </resources>
 </document>

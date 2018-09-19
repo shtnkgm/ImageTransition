@@ -7,10 +7,31 @@
 //
 
 import UIKit
+import ImageTransition
 
-class DestinationViewController: UIViewController {
-
+final class DestinationViewController: UIViewController {
+    @IBOutlet private weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewDidTapped))
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    static func make() -> DestinationViewController {
+        let storyBoard = UIStoryboard(name: "DestinationViewController", bundle: nil)
+        let destinationViewController = storyBoard.instantiateInitialViewController()
+        return destinationViewController as! DestinationViewController
+    }
+    
+    @objc private func imageViewDidTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension DestinationViewController: ImageTransitionable {
+    var imageViewForTransition: UIImageView? {
+        return imageView
     }
 }
