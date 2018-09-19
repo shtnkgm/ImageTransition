@@ -9,7 +9,7 @@
 
 Something looks like below:
 
-> :construction:Todo: sample image
+<img src="https://github.com/shtnkgm/ImageTransition/raw/master/docs/assets/sample.gif" alt="Sample" width="30%" />
 
 ## Installation
 
