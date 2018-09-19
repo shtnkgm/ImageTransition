@@ -22,8 +22,6 @@ Something looks like below:
 
 > :construction:Todo: usage here
 
-## Todo
-
 ## Requirements
 
  - iOS 9.0 or later
