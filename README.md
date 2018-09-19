@@ -26,7 +26,7 @@ Something looks like below:
 
  - iOS 9.0 or later
 
-## Contribution
+## Contributing
 
 Pull requests and stars are always welcome.
 
