@@ -11,6 +11,12 @@ Something looks like below:
 
 <img src="https://github.com/shtnkgm/ImageTransition/raw/master/docs/assets/sample.gif" alt="Sample" width="30%" />
 
+## Feature
+ - [x] Transition zooming animation like the iOS Photos app and the "Pinterest", and so on
+ - [x] Easy to use (conform to `ImageTransitionable` protocol)
+ - [x] Swifty
+ - [x] Animation configuration customizable (animation duration, UIView.AnimationOptions)
+
 ## Installation
 
 ### Carthage
