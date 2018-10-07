@@ -14,7 +14,7 @@ Something looks like below:
 ## Feature
  - [x] Transition zooming animation like the iOS Photos app and the "Pinterest", and so on
  - [x] Easy to use (conform to `ImageTransitionable` protocol)
- - [x] Swifty
+ - [x] Swifty (protocol-oriented)
  - [x] Animation configuration customizable (animation duration, UIView.AnimationOptions)
 
 ## Installation
