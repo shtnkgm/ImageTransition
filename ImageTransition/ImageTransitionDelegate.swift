@@ -36,14 +36,17 @@ extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
 }
 
 extension ImageTransitionDelegate: UINavigationControllerDelegate {
-    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController,
+                                     animationControllerFor operation: UINavigationController.Operation,
+                                     from fromVC: UIViewController,
+                                     to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
         case .none:
             return nil
         case .pop:
-            return ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
+            return ImageTransitioning(duration: popDuration, animationOptions: popAnimationOptions)
         case .push:
-            return ImageTransitioning(duration: presentDuration, animationOptions: presentAnimationOptions)
+            return ImageTransitioning(duration: pushDuration, animationOptions: pushAnimationOptions)
         }
     }
 }
