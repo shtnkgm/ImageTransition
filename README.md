@@ -16,6 +16,7 @@ Something looks like below:
  - [x] Easy to use (conform to `ImageTransitionable` protocol)
  - [x] Swifty (protocol-oriented)
  - [x] Animation configuration customizable (animation duration, UIView.AnimationOptions)
+ - [x] CornerRadius animation (e.g. from a round image to a square Image)
 
 ## Installation
 
