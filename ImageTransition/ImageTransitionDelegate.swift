@@ -13,8 +13,12 @@ public final class ImageTransitionDelegate: NSObject {
 
     public var presentDuration: TimeInterval = 0.375
     public var dismissDuration: TimeInterval = 0.375
+    public var pushDuration: TimeInterval = 0.375
+    public var popDuration: TimeInterval = 0.375
     public var presentAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
     public var dismissAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
+    public var pushAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
+    public var popAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
 
     private override init() { }
 }
@@ -28,5 +32,18 @@ extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
+    }
+}
+
+extension ImageTransitionDelegate: UINavigationControllerDelegate {
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch operation {
+        case .none:
+            return nil
+        case .pop:
+            return ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
+        case .push:
+            return ImageTransitioning(duration: presentDuration, animationOptions: presentAnimationOptions)
+        }
     }
 }
