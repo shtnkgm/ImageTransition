@@ -45,12 +45,21 @@ extension DestinationViewController: ImageTransitionable {
     }
 }
 ```
- - Set ImageTransitionDelegate.shared to `transitioningDelegate` property of Destination View Controller
+
+ - [present / dismiss transition] Set ImageTransitionDelegate.shared to `transitioningDelegate` property of Destination View Controller
 ```swift
     @objc private func imageViewDidTapped() {
         let destinationViewController = DestinationViewController.make()
         destinationViewController.transitioningDelegate = ImageTransitionDelegate.shared
         present(destinationViewController, animated: true, completion: nil)
+    }
+```
+ - [push / pop transition] Set ImageTransitionDelegate.shared to `delegate` property of UINavigationContoller
+```swift
+    @objc private func imageViewDidTapped() {
+        let destinationViewController = DestinationViewController.make()
+        navigationController?.delegate = ImageTransitionDelegate.shared
+        navigationController?.pushViewController(destinationViewController, animated: true)
     }
 ```
 
@@ -61,8 +70,12 @@ You can customize the configuration of animation.
 ```swift
 ImageTransitionDelegate.shared.presentDuration = 0.5
 ImageTransitionDelegate.shared.dismissDuration = 0.5
+ImageTransitionDelegate.shared.pushDuration = 0.5
+ImageTransitionDelegate.shared.popDuration = 0.5
 ImageTransitionDelegate.shared.presentAnimationOptions = [.curveLinear]
 ImageTransitionDelegate.shared.dismissAnimationOptions = [.curveEaseIn]
+ImageTransitionDelegate.shared.pushAnimationOptions = [.curveLinear]
+ImageTransitionDelegate.shared.popAnimationOptions = [.curveEaseIn]
 ```
 
 ## Requirements
