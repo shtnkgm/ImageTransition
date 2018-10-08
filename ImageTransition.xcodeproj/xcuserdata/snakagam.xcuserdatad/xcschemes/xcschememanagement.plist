@@ -9,7 +9,7 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Sample.xcscheme</key>
+		<key>Sample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
@@ -23,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>DA5486ED21525AEB00E0899D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA548718215266AB00E0899D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
