@@ -24,8 +24,6 @@ cache:
 script:
   - set -o pipefail
   - xcodebuild $ACTION -project $PROJECT -scheme $SCHEME -sdk $SDK -destination 'name=iPhone 8,OS=11.4' -configuration $CONFIG ENABLE_TESTABILITY=YES | xcpretty
-
-notifications:
-  email: false
-  slack:
-    secure: WjbIXc8MtT/UDWv/skCr7H49s5ro3UZWFk3Wnir3DqIzVS+9LWPVeP1e/ea2/uJblJ9k6OVK7MHHiuEoQ5GpXdHMNsuDXt3c5IosvFAQTvNshnzcsUxt7b5o8qpH3WaGWMK/PIZs8m1xlsBYfhiTRsVriNFn3o4ccktNqgSIoa0ONq6Mhrqe1hVTDO6qMKda7V7mZk9xtQ/qedeRNYPyESb7wDPyBTf2GUH56K3+F2Trzd4GUfCVLVp2RqHACUofaeSBhlR+cX/8FiddSsOc8C40mQffEj6rzEyk4ByqFqIxTHu3GfgMeKpGF3fuCLMUlU0KgZ48X4CXHtsUjmbUADQ32wcUWguvNBiINBCZwdNvN4105+/TO2eAMCSwaj8EGDdmWKBMRwhXpSG15RXPI09608dA282n/4/d4gODFYAMuKgIu7CtWHrcUGVodeKe/LmCAbeLnKy/ynVyhk+nsDHKwZK85ALYbWkBjYfLro//7zzKFJEsybEJGxLVIoJwEneiQ1KZgO0tpezWNIh+/RGIbc6jIvERXqNGzf0USVlPMz/y4Tj9cncvu0lUQXkWxbDUcPYOTecq17nqV49GHV9Vo6o3raID+DMTTNSKQF5CVOM77BENsaFr5EzZ49XrQGry9qy4JNn4Z5TFWnNhl3cbbeK/hxdMkEf95lc9kH4=
+    
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
