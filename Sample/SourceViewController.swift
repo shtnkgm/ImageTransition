@@ -25,6 +25,8 @@ final class SourceViewController: UIViewController {
     @objc private func imageViewDidTapped() {
         let destinationViewController = DestinationViewController.make()
         destinationViewController.transitioningDelegate = ImageTransitionDelegate.shared
+        ImageTransitionDelegate.shared.dismissDuration = 1
+        ImageTransitionDelegate.shared.presentDuration = 1
         present(destinationViewController, animated: true, completion: nil)
     }
 }
