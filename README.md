@@ -10,7 +10,8 @@
 
 Something looks like below:
 
-<img src="https://github.com/shtnkgm/ImageTransition/raw/master/docs/assets/sample.gif" alt="Sample" width="30%" />
+<img src="https://github.com/shtnkgm/ImageTransition/raw/master/docs/assets/sample_01.gif" alt="Sample" width="30%" />
+<img src="https://github.com/shtnkgm/ImageTransition/raw/master/docs/assets/sample_02.gif" alt="Sample" width="30%" />
 
 ## Feature
  - [x] Transition zooming animation like the iOS Photos app and the "Pinterest", and so on
