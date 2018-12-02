@@ -1,6 +1,7 @@
 # ImageTransition
 
 [![Build Status](https://travis-ci.com/shtnkgm/ImageTransition.svg?branch=master)](https://travis-ci.com/shtnkgm/ImageTransition)
+[![Cocoapods](https://img.shields.io/cocoapods/v/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Version](https://img.shields.io/badge/Swift-4-F16D39.svg)](https://developer.apple.com/swift)
 [![GitHub](https://img.shields.io/github/license/shtnkgm/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition/blob/master/LICENSE)
@@ -27,6 +28,11 @@ Something looks like below:
 
  - Add `github "shtnkgm/ImageTransition"` to your Cartfile.
  - Run carthage update.
+ 
+### CocoaPods
+
+ - Add `pod 'ImageTransition'` to your Cartfile.
+ - Run pod update.
 
 ## Usage
 
