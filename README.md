@@ -36,37 +36,36 @@ Something looks like below:
 
 ## Usage
 
- - Import ImageTransition in Source and Destination View Controllers
+ - Confirm `ImageTransitionable` protocol
 ```swift
+// Source UIViewController
 import ImageTransition
-```
- - Confirm `ImageTransitionable` protocol in Source and Destination View Controllers
-```swift
 extension SourceViewController: ImageTransitionable {
     var imageViewForTransition: UIImageView? {
         return imageView
     }
 }
-
+// Destination UIViewController
+import ImageTransition
 extension DestinationViewController: ImageTransitionable {
     var imageViewForTransition: UIImageView? {
         return imageView
     }
 }
 ```
-
- - [present / dismiss transition] Set ImageTransitionDelegate.shared to `transitioningDelegate` property of Destination View Controller
+ - Set Delegate
 ```swift
+    // present / dismiss transition
     @objc private func imageViewDidTapped() {
         let destinationViewController = DestinationViewController.make()
         destinationViewController.transitioningDelegate = ImageTransitionDelegate.shared
         present(destinationViewController, animated: true, completion: nil)
     }
-```
- - [push / pop transition] Set ImageTransitionDelegate.shared to `delegate` property of UINavigationContoller
-```swift
+
+    // push / pop transition
     @objc private func imageViewDidTapped() {
         let destinationViewController = DestinationViewController.make()
+        // Set ImageTransitionDelegate.shared to `delegate` property of UINavigationContoller
         navigationController?.delegate = ImageTransitionDelegate.shared
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
