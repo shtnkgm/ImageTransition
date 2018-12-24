@@ -1,6 +1,7 @@
 # ImageTransition
 
 [![Build Status](https://travis-ci.com/shtnkgm/ImageTransition.svg?branch=master)](https://travis-ci.com/shtnkgm/ImageTransition)
+[![Cocoapods](https://img.shields.io/cocoapods/v/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Version](https://img.shields.io/badge/Swift-4-F16D39.svg)](https://developer.apple.com/swift)
 [![GitHub](https://img.shields.io/github/license/shtnkgm/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition/blob/master/LICENSE)
@@ -27,40 +28,44 @@ Something looks like below:
 
  - Add `github "shtnkgm/ImageTransition"` to your Cartfile.
  - Run carthage update.
+ 
+### CocoaPods
+
+ - Add `pod 'ImageTransition'` to your Cartfile.
+ - Run pod update.
 
 ## Usage
 
- - Import ImageTransition in Source and Destination View Controllers
+ - Confirm `ImageTransitionable` protocol
 ```swift
+// Source UIViewController
 import ImageTransition
-```
- - Confirm `ImageTransitionable` protocol in Source and Destination View Controllers
-```swift
 extension SourceViewController: ImageTransitionable {
     var imageViewForTransition: UIImageView? {
         return imageView
     }
 }
-
+// Destination UIViewController
+import ImageTransition
 extension DestinationViewController: ImageTransitionable {
     var imageViewForTransition: UIImageView? {
         return imageView
     }
 }
 ```
-
- - [present / dismiss transition] Set ImageTransitionDelegate.shared to `transitioningDelegate` property of Destination View Controller
+ - Set Delegate
 ```swift
+    // present / dismiss transition
     @objc private func imageViewDidTapped() {
         let destinationViewController = DestinationViewController.make()
         destinationViewController.transitioningDelegate = ImageTransitionDelegate.shared
         present(destinationViewController, animated: true, completion: nil)
     }
-```
- - [push / pop transition] Set ImageTransitionDelegate.shared to `delegate` property of UINavigationContoller
-```swift
+
+    // push / pop transition
     @objc private func imageViewDidTapped() {
         let destinationViewController = DestinationViewController.make()
+        // Set ImageTransitionDelegate.shared to `delegate` property of UINavigationContoller
         navigationController?.delegate = ImageTransitionDelegate.shared
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
