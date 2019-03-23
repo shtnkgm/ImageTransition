@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		974D5004224683130015B768 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D5002224683130015B768 /* ItemListViewController.swift */; };
+		974D50072246849C0015B768 /* ItemListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974D50062246849C0015B768 /* ItemListViewController.xib */; };
+		974D500A2246853B0015B768 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D50082246853B0015B768 /* ItemCell.swift */; };
+		974D500B2246853B0015B768 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974D50092246853B0015B768 /* ItemCell.xib */; };
+		974D500D224694910015B768 /* ItemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974D500C224694910015B768 /* ItemDetailViewController.xib */; };
 		DA4B56BE216AA51D0046FC72 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DA4B56BD216AA51D0046FC72 /* README.md */; };
 		DA5486EF21525AEB00E0899D /* ImageTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5486E521525AEB00E0899D /* ImageTransition.framework */; };
 		DA5486F621525AEB00E0899D /* ImageTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = DA5486E821525AEB00E0899D /* ImageTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,10 +29,7 @@
 		DA54871C215266AB00E0899D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54871B215266AB00E0899D /* AppDelegate.swift */; };
 		DA548723215266AC00E0899D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA548722215266AC00E0899D /* Assets.xcassets */; };
 		DA548726215266AC00E0899D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA548724215266AC00E0899D /* LaunchScreen.storyboard */; };
-		DA8EAFBE2152AEB100BC5968 /* SourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8EAFBC2152AEB100BC5968 /* SourceViewController.swift */; };
-		DA8EAFC22152AECD00BC5968 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8EAFC02152AECD00BC5968 /* DestinationViewController.swift */; };
-		DA8EAFC52152AF4000BC5968 /* SourceViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA8EAFC42152AF4000BC5968 /* SourceViewController.storyboard */; };
-		DA8EAFC72152AF5400BC5968 /* DestinationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA8EAFC62152AF5400BC5968 /* DestinationViewController.storyboard */; };
+		DA8EAFC22152AECD00BC5968 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8EAFC02152AECD00BC5968 /* ItemDetailViewController.swift */; };
 		DA8EAFC92152B0A700BC5968 /* ImageTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5486E521525AEB00E0899D /* ImageTransition.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		974D5002224683130015B768 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		974D50062246849C0015B768 /* ItemListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListViewController.xib; sourceTree = "<group>"; };
+		974D50082246853B0015B768 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		974D50092246853B0015B768 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		974D500C224694910015B768 /* ItemDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailViewController.xib; sourceTree = "<group>"; };
 		DA4B56BD216AA51D0046FC72 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA5486E521525AEB00E0899D /* ImageTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5486E821525AEB00E0899D /* ImageTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageTransition.h; sourceTree = "<group>"; };
@@ -71,10 +78,7 @@
 		DA548722215266AC00E0899D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA548725215266AC00E0899D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA548727215266AC00E0899D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA8EAFBC2152AEB100BC5968 /* SourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewController.swift; sourceTree = "<group>"; };
-		DA8EAFC02152AECD00BC5968 /* DestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
-		DA8EAFC42152AF4000BC5968 /* SourceViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SourceViewController.storyboard; sourceTree = "<group>"; };
-		DA8EAFC62152AF5400BC5968 /* DestinationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DestinationViewController.storyboard; sourceTree = "<group>"; };
+		DA8EAFC02152AECD00BC5968 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,10 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				DA54871B215266AB00E0899D /* AppDelegate.swift */,
-				DA8EAFBC2152AEB100BC5968 /* SourceViewController.swift */,
-				DA8EAFC42152AF4000BC5968 /* SourceViewController.storyboard */,
-				DA8EAFC02152AECD00BC5968 /* DestinationViewController.swift */,
-				DA8EAFC62152AF5400BC5968 /* DestinationViewController.storyboard */,
+				974D5002224683130015B768 /* ItemListViewController.swift */,
+				974D50062246849C0015B768 /* ItemListViewController.xib */,
+				974D50082246853B0015B768 /* ItemCell.swift */,
+				974D50092246853B0015B768 /* ItemCell.xib */,
+				DA8EAFC02152AECD00BC5968 /* ItemDetailViewController.swift */,
+				974D500C224694910015B768 /* ItemDetailViewController.xib */,
 				DA548722215266AC00E0899D /* Assets.xcassets */,
 				DA548724215266AC00E0899D /* LaunchScreen.storyboard */,
 				DA548727215266AC00E0899D /* Info.plist */,
@@ -307,8 +313,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA8EAFC72152AF5400BC5968 /* DestinationViewController.storyboard in Resources */,
-				DA8EAFC52152AF4000BC5968 /* SourceViewController.storyboard in Resources */,
+				974D50072246849C0015B768 /* ItemListViewController.xib in Resources */,
+				974D500D224694910015B768 /* ItemDetailViewController.xib in Resources */,
+				974D500B2246853B0015B768 /* ItemCell.xib in Resources */,
 				DA548726215266AC00E0899D /* LaunchScreen.storyboard in Resources */,
 				DA548723215266AC00E0899D /* Assets.xcassets in Resources */,
 			);
@@ -368,8 +375,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA54871C215266AB00E0899D /* AppDelegate.swift in Sources */,
-				DA8EAFC22152AECD00BC5968 /* DestinationViewController.swift in Sources */,
-				DA8EAFBE2152AEB100BC5968 /* SourceViewController.swift in Sources */,
+				974D5004224683130015B768 /* ItemListViewController.swift in Sources */,
+				DA8EAFC22152AECD00BC5968 /* ItemDetailViewController.swift in Sources */,
+				974D500A2246853B0015B768 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

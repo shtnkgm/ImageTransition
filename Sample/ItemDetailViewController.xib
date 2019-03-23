@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemDetailViewController" customModule="Sample" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="1t8-1U-E2y" id="UsB-qh-c2K"/>
+                <outlet property="titleLabel" destination="aSe-bH-bh9" id="S7x-fh-Kgq"/>
+                <outlet property="view" destination="iN0-l3-epB" id="DoJ-bb-4Bx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-1U-E2y">
+                    <rect key="frame" x="0.0" y="20" width="375" height="400"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="DRx-sd-vCg"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit Tart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-bH-bh9">
+                    <rect key="frame" x="16" y="428" width="343" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="WfZ-my-lGb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yhx-I3-HKv">
+                    <rect key="frame" x="16" y="486" width="343" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="8gP-VG-qXT"/>
+                    </constraints>
+                    <string key="text">Every season's fruit is attractive to each, and when you look at the harvested fruit you just get excited just to imagine "How delicious it would be if you make this a cake!"</string>
+                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yhx-I3-HKv" secondAttribute="trailing" constant="16" id="6jN-La-v2a"/>
+                <constraint firstItem="aSe-bH-bh9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="A33-xq-0Yk"/>
+                <constraint firstItem="aSe-bH-bh9" firstAttribute="top" secondItem="1t8-1U-E2y" secondAttribute="bottom" constant="8" id="AcG-aM-e21"/>
+                <constraint firstItem="1t8-1U-E2y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FEh-lh-E0u"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aSe-bH-bh9" secondAttribute="trailing" constant="16" id="J6y-kZ-0VP"/>
+                <constraint firstItem="1t8-1U-E2y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RwK-CJ-j22"/>
+                <constraint firstItem="1t8-1U-E2y" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gpn-2n-xmf"/>
+                <constraint firstItem="Yhx-I3-HKv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ofJ-PL-joz"/>
+                <constraint firstItem="Yhx-I3-HKv" firstAttribute="top" secondItem="aSe-bH-bh9" secondAttribute="bottom" constant="8" id="vqs-OW-V0b"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+</document>
