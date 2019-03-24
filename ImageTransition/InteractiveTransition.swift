@@ -10,7 +10,10 @@ import UIKit
 
 internal final class InteractiveTransition: UIPercentDrivenInteractiveTransition {
     var hasStarted = false
-    var shouldFinish = false
+
+    override init() {
+        super.init()
+    }
 
     func handleGesture(_ gesture: UIPanGestureRecognizer, view: UIView) {
         let percentThreshold: CGFloat = 0.3
@@ -23,11 +26,10 @@ internal final class InteractiveTransition: UIPercentDrivenInteractiveTransition
         case .cancelled:
             hasStarted = false
         case .changed:
-            shouldFinish = progress > percentThreshold
             update(progress)
         case .ended:
             hasStarted = false
-            shouldFinish ? finish() : cancel()
+            progress > percentThreshold ? finish() : cancel()
         case .failed:
             break
         case .possible:
