@@ -48,11 +48,14 @@ extension ItemListViewController: UICollectionViewDelegate {
         guard let selectedCell = selectedCell(),
         let item = selectedCell.item else { return }
         
-        let destinationViewController = ItemDetailViewController(item: item)
-        navigationController?.delegate = ImageTransitionDelegate.shared
+        let itemDetailViewController = ItemDetailViewController(item: item)
+        
         ImageTransitionDelegate.shared.dismissDuration = 1
         ImageTransitionDelegate.shared.presentDuration = 1
-        navigationController?.pushViewController(destinationViewController, animated: true)
+        
+        // Push
+        navigationController?.delegate = ImageTransitionDelegate.shared
+        navigationController?.pushViewController(itemDetailViewController, animated: true)
     }
 }
 

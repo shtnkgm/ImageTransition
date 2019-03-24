@@ -9,12 +9,14 @@
 import UIKit
 import ImageTransition
 
-final class ItemDetailViewController: UIViewController {
+final class ItemDetailViewController: UIViewController, UIViewControllerTransitioningDelegate {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     
     private let item: Item
+    
+    var nibDidLoad: () -> Void = {}
     
     init(item: Item) {
         self.item = item
@@ -23,6 +25,11 @@ final class ItemDetailViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        nibDidLoad()
     }
     
     override func viewDidLoad() {

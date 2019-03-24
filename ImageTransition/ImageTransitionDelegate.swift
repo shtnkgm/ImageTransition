@@ -58,4 +58,9 @@ extension ImageTransitionDelegate: UINavigationControllerDelegate {
             return ImageTransitioning(duration: pushDuration, animationOptions: pushAnimationOptions)
         }
     }
+
+    public func navigationController(_ navigationController: UINavigationController,
+                                     interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactiveTransition.hasStarted ? interactiveTransition : nil
+    }
 }

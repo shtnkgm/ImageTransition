@@ -17,7 +17,6 @@ internal final class InteractiveTransition: UIPercentDrivenInteractiveTransition
         let transition = gesture.translation(in: view)
         let progress = clamp(transition.y / view.bounds.height, min: 0, max: 1)
 
-        print(progress)
         switch gesture.state {
         case .began:
             hasStarted = true
