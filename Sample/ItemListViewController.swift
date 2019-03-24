@@ -14,7 +14,7 @@ class ItemListViewController: UIViewController {
     private let margin: CGFloat = 1
     private let column: CGFloat = 3
     
-    private let items: [String] = ["kiwi", "strawberry", "apple", "orange", "tomato", "lemon"]
+    private let items: [Item] = ["kiwi", "strawberry", "apple", "orange", "tomato", "lemon"].map { Item(title: $0) }
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
@@ -46,10 +46,9 @@ extension ItemListViewController: ImageTransitionable {
 extension ItemListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedCell = selectedCell(),
-        let image = selectedCell.imageView.image,
-        let title = selectedCell.titleLabel.text else { return }
+        let item = selectedCell.item else { return }
         
-        let destinationViewController = ItemDetailViewController(dependency: .init(image: image, title: title))
+        let destinationViewController = ItemDetailViewController(item: item)
         navigationController?.delegate = ImageTransitionDelegate.shared
         ImageTransitionDelegate.shared.dismissDuration = 1
         ImageTransitionDelegate.shared.presentDuration = 1
@@ -70,7 +69,7 @@ extension ItemListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.identifier, for: indexPath)
         guard let itemCell = cell as? ItemCell else { fatalError() }
         guard let item = items.randomElement() else { fatalError() }
-        itemCell.set(image: UIImage(named: item), title: item)
+        itemCell.set(item: item)
         return cell
     }
 }

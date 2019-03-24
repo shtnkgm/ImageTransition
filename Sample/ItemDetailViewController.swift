@@ -12,16 +12,12 @@ import ImageTransition
 final class ItemDetailViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
     
-    private let dependency: Dependency
+    private let item: Item
     
-    struct Dependency {
-        let image: UIImage
-        let title: String
-    }
-    
-    init(dependency: Dependency) {
-        self.dependency = dependency
+    init(item: Item) {
+        self.item = item
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,16 +28,17 @@ final class ItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = dependency.image
-        titleLabel.text = dependency.title
+        imageView.image = item.image
+        titleLabel.text = item.title
+        priceLabel.text = item.priceString
         
-        imageView.isUserInteractionEnabled = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewDidTapped))
-        imageView.addGestureRecognizer(tapGestureRecognizer)
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(viewDidPan))
+        view.addGestureRecognizer(panGestureRecognizer)
     }
     
-    @objc private func imageViewDidTapped() {
-        dismiss(animated: true, completion: nil)
+    @objc private func viewDidPan(gesture: UIPanGestureRecognizer) {
+        ImageTransitionDelegate.shared.handleGesture(gesture, view: view)
+        navigationController?.popViewController(animated: true)
     }
 }
 

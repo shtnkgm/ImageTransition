@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemDetailViewController" customModule="Sample" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="1t8-1U-E2y" id="UsB-qh-c2K"/>
+                <outlet property="priceLabel" destination="VPu-U4-nYj" id="3bO-dD-h4K"/>
                 <outlet property="titleLabel" destination="aSe-bH-bh9" id="S7x-fh-Kgq"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DoJ-bb-4Bx"/>
             </connections>
@@ -22,45 +23,69 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-1U-E2y">
-                    <rect key="frame" x="0.0" y="20" width="375" height="400"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="400" id="DRx-sd-vCg"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fruit Tart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-bH-bh9">
-                    <rect key="frame" x="16" y="428" width="343" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="WfZ-my-lGb"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Yhx-I3-HKv">
-                    <rect key="frame" x="16" y="486" width="343" height="120"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="120" id="8gP-VG-qXT"/>
-                    </constraints>
-                    <string key="text">Every season's fruit is attractive to each, and when you look at the harvested fruit you just get excited just to imagine "How delicious it would be if you make this a cake!"</string>
-                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oqJ-Px-Kbo">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1t8-1U-E2y">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="350" id="mFs-No-RPp"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uP9-YT-C2f">
+                            <rect key="frame" x="0.0" y="350" width="375" height="297"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PoW-WO-9T9">
+                                    <rect key="frame" x="16" y="16" width="343" height="149.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-bH-bh9">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="42" id="eBT-Np-uVH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US $ -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPu-U4-nYj">
+                                            <rect key="frame" x="0.0" y="50" width="343" height="19.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="19.5" id="RNb-7O-RKc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jU8-ie-IWj">
+                                            <rect key="frame" x="0.0" y="77.5" width="343" height="72"/>
+                                            <string key="text">Every season's fruit is attractive to each, and when you look at the harvested fruit you just get excited just to imagine "How delicious it would be if you make this a cake!"</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="PoW-WO-9T9" firstAttribute="leading" secondItem="uP9-YT-C2f" secondAttribute="leading" constant="16" id="CFM-Pu-3Iw"/>
+                                <constraint firstItem="PoW-WO-9T9" firstAttribute="top" secondItem="uP9-YT-C2f" secondAttribute="top" constant="16" id="Fwa-x0-b7g"/>
+                                <constraint firstAttribute="trailing" secondItem="PoW-WO-9T9" secondAttribute="trailing" constant="16" id="zqE-yX-xqF"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yhx-I3-HKv" secondAttribute="trailing" constant="16" id="6jN-La-v2a"/>
-                <constraint firstItem="aSe-bH-bh9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="A33-xq-0Yk"/>
-                <constraint firstItem="aSe-bH-bh9" firstAttribute="top" secondItem="1t8-1U-E2y" secondAttribute="bottom" constant="8" id="AcG-aM-e21"/>
-                <constraint firstItem="1t8-1U-E2y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FEh-lh-E0u"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aSe-bH-bh9" secondAttribute="trailing" constant="16" id="J6y-kZ-0VP"/>
-                <constraint firstItem="1t8-1U-E2y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RwK-CJ-j22"/>
-                <constraint firstItem="1t8-1U-E2y" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gpn-2n-xmf"/>
-                <constraint firstItem="Yhx-I3-HKv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ofJ-PL-joz"/>
-                <constraint firstItem="Yhx-I3-HKv" firstAttribute="top" secondItem="aSe-bH-bh9" secondAttribute="bottom" constant="8" id="vqs-OW-V0b"/>
+                <constraint firstItem="oqJ-Px-Kbo" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="BG1-5h-JRl"/>
+                <constraint firstItem="oqJ-Px-Kbo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="GDR-fB-bGe"/>
+                <constraint firstItem="oqJ-Px-Kbo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JWN-E1-pBK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oqJ-Px-Kbo" secondAttribute="bottom" id="rhg-12-gxE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>
     </objects>
 </document>

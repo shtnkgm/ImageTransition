@@ -19,8 +19,13 @@ public final class ImageTransitionDelegate: NSObject {
     public var dismissAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
     public var pushAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
     public var popAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
+    private let interactiveTransition = InteractiveTransition()
 
     private override init() { }
+
+    public func handleGesture(_ gesture: UIPanGestureRecognizer, view: UIView) {
+        interactiveTransition.handleGesture(gesture, view: view)
+    }
 }
 
 extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
@@ -32,6 +37,10 @@ extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
+    }
+
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactiveTransition.hasStarted ? interactiveTransition : nil
     }
 }
 

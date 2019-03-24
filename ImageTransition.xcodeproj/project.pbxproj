@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9709174D22471D5C00803C56 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709174C22471D5C00803C56 /* InteractiveTransition.swift */; };
+		9709174F2247217300803C56 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709174E2247217300803C56 /* Function.swift */; };
+		9709175122475A5D00803C56 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709175022475A5D00803C56 /* Item.swift */; };
+		9709175322475BC600803C56 /* Item+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9709175222475BC600803C56 /* Item+.swift */; };
 		974D5004224683130015B768 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D5002224683130015B768 /* ItemListViewController.swift */; };
 		974D50072246849C0015B768 /* ItemListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974D50062246849C0015B768 /* ItemListViewController.xib */; };
 		974D500A2246853B0015B768 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D50082246853B0015B768 /* ItemCell.swift */; };
@@ -51,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9709174C22471D5C00803C56 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
+		9709174E2247217300803C56 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		9709175022475A5D00803C56 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9709175222475BC600803C56 /* Item+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+.swift"; sourceTree = "<group>"; };
 		974D5002224683130015B768 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		974D50062246849C0015B768 /* ItemListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListViewController.xib; sourceTree = "<group>"; };
 		974D50082246853B0015B768 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -136,10 +144,12 @@
 				DA5486E821525AEB00E0899D /* ImageTransition.h */,
 				DA5486FF215263A900E0899D /* ImageTransitioning.swift */,
 				DA548701215263B400E0899D /* ImageTransitionDelegate.swift */,
+				9709174C22471D5C00803C56 /* InteractiveTransition.swift */,
 				DA548703215263BE00E0899D /* ImageTransitionable.swift */,
 				DA548705215263C800E0899D /* UIImageView+.swift */,
 				DA548707215263DB00E0899D /* UIView+.swift */,
 				DA548709215263E500E0899D /* UIImage+.swift */,
+				9709174E2247217300803C56 /* Function.swift */,
 				DA5486E921525AEB00E0899D /* Info.plist */,
 			);
 			path = ImageTransition;
@@ -168,6 +178,8 @@
 				974D50092246853B0015B768 /* ItemCell.xib */,
 				DA8EAFC02152AECD00BC5968 /* ItemDetailViewController.swift */,
 				974D500C224694910015B768 /* ItemDetailViewController.xib */,
+				9709175022475A5D00803C56 /* Item.swift */,
+				9709175222475BC600803C56 /* Item+.swift */,
 				DA548722215266AC00E0899D /* Assets.xcassets */,
 				DA548724215266AC00E0899D /* LaunchScreen.storyboard */,
 				DA548727215266AC00E0899D /* Info.plist */,
@@ -340,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\n  swiftlint autocorrect\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect --format\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -352,9 +364,11 @@
 				DA548706215263C800E0899D /* UIImageView+.swift in Sources */,
 				DA548700215263A900E0899D /* ImageTransitioning.swift in Sources */,
 				DA548704215263BE00E0899D /* ImageTransitionable.swift in Sources */,
+				9709174D22471D5C00803C56 /* InteractiveTransition.swift in Sources */,
 				DA54870A215263E500E0899D /* UIImage+.swift in Sources */,
 				DA548702215263B400E0899D /* ImageTransitionDelegate.swift in Sources */,
 				DA548708215263DB00E0899D /* UIView+.swift in Sources */,
+				9709174F2247217300803C56 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,9 +388,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9709175122475A5D00803C56 /* Item.swift in Sources */,
 				DA54871C215266AB00E0899D /* AppDelegate.swift in Sources */,
 				974D5004224683130015B768 /* ItemListViewController.swift in Sources */,
 				DA8EAFC22152AECD00BC5968 /* ItemDetailViewController.swift in Sources */,
+				9709175322475BC600803C56 /* Item+.swift in Sources */,
 				974D500A2246853B0015B768 /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

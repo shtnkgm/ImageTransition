@@ -13,13 +13,18 @@ class ItemCell: UICollectionViewCell {
     
     @IBOutlet private(set) weak var imageView: UIImageView!
     @IBOutlet private(set) weak var titleLabel: UILabel!
+    @IBOutlet private(set) weak var priceLabel: UILabel!
+    
+    var item: Item?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func set(image: UIImage?, title: String) {
-        imageView.image = image
-        titleLabel.text = title
+    func set(item: Item) {
+        self.item = item
+        imageView.image = item.image
+        titleLabel.text = item.title
+        priceLabel.text = item.priceString
     }
 }
