@@ -84,7 +84,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         let options: UIView.AnimationOptions = animationOptions
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
-            
+
             movingView.frame.size = toImageView.displayingImageSize
             movingView.center = toImageView.convertCenter(to: toVC.view)
             movingView.layer.cornerRadius = toImageView.layer.cornerRadius
@@ -92,10 +92,12 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             movingTitleView.frame.size = toTitleView.frame.size
             movingTitleView.center = toTitleView.convertCenter(to: toVC.view)
             movingTitleView.font = toTitleView.font
+            movingTitleView.textColor = toTitleView.textColor
 
             movingSubtitleView.frame.size = toSubtitleView.frame.size
             movingSubtitleView.center = toSubtitleView.convertCenter(to: toVC.view)
             movingSubtitleView.font = toSubtitleView.font
+            movingSubtitleView.textColor = toSubtitleView.textColor
 
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
