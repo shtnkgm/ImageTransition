@@ -53,6 +53,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingTitleView.frame.size = fromTitleView.frame.size
         movingTitleView.center = fromTitleView.convertCenter(to: fromVC.view)
         movingTitleView.font = fromTitleView.font
+        movingTitleView.textColor = fromTitleView.textColor
         transitionContext.containerView.addSubviews(toVC.view, movingTitleView)
 
         let movingSubtitleView = UILabel()
@@ -60,6 +61,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingSubtitleView.frame.size = fromSubtitleView.frame.size
         movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
         movingSubtitleView.font = fromSubtitleView.font
+        movingSubtitleView.textColor = fromSubtitleView.textColor
         transitionContext.containerView.addSubviews(toVC.view, movingSubtitleView)
 
         // Do not use "isHidden" not to animate in stackview
@@ -82,6 +84,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         let options: UIView.AnimationOptions = animationOptions
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
+            
             movingView.frame.size = toImageView.displayingImageSize
             movingView.center = toImageView.convertCenter(to: toVC.view)
             movingView.layer.cornerRadius = toImageView.layer.cornerRadius
@@ -90,9 +93,9 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             movingTitleView.center = toTitleView.convertCenter(to: toVC.view)
             movingTitleView.font = toTitleView.font
 
-            movingSubtitleView.frame.size = toTitleView.frame.size
-            movingSubtitleView.center = toTitleView.convertCenter(to: toVC.view)
-            movingSubtitleView.font = toTitleView.font
+            movingSubtitleView.frame.size = toSubtitleView.frame.size
+            movingSubtitleView.center = toSubtitleView.convertCenter(to: toVC.view)
+            movingSubtitleView.font = toSubtitleView.font
 
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
