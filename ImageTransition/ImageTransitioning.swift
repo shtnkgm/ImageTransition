@@ -63,6 +63,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingSubtitleView.copyproperties(from: fromSubtitleView)
         movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
 
+        transitionContext.containerView.backgroundColor = .white
         transitionContext.containerView.addSubviews(toVC.view, movingBaseView, movingImageView, movingTitleView, movingSubtitleView)
 
         // Do not use "isHidden" not to animate in stackview
