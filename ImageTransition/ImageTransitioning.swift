@@ -45,17 +45,16 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingView.clipsToBounds = true
         movingView.contentMode = .scaleAspectFill
         movingView.center = fromImageView.convertCenter(to: fromVC.view)
-        transitionContext.containerView.addSubviews(toVC.view, movingView)
 
         let movingTitleView = UILabel()
         movingTitleView.copyproperties(from: fromTitleView)
         movingTitleView.center = fromTitleView.convertCenter(to: fromVC.view)
-        transitionContext.containerView.addSubviews(toVC.view, movingTitleView)
 
         let movingSubtitleView = UILabel()
         movingSubtitleView.copyproperties(from: fromSubtitleView)
         movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
-        transitionContext.containerView.addSubviews(toVC.view, movingSubtitleView)
+
+        transitionContext.containerView.addSubviews(toVC.view, movingView, movingTitleView, movingSubtitleView)
 
         // Do not use "isHidden" not to animate in stackview
         fromImageView.alpha = 0.0

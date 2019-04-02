@@ -67,7 +67,6 @@
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="PoW-WO-9T9" firstAttribute="leading" secondItem="uP9-YT-C2f" secondAttribute="leading" constant="16" id="CFM-Pu-3Iw"/>
                                 <constraint firstItem="PoW-WO-9T9" firstAttribute="top" secondItem="uP9-YT-C2f" secondAttribute="top" constant="16" id="Fwa-x0-b7g"/>
