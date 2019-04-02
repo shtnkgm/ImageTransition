@@ -41,27 +41,20 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
 
         // Use image with larger size
         let movingView = UIImageView(image: fromImage.largerCompared(with: toImage))
+        movingView.copyproperties(from: fromImageView)
         movingView.clipsToBounds = true
         movingView.contentMode = .scaleAspectFill
-        movingView.frame.size = fromImageView.displayingImageSize
         movingView.center = fromImageView.convertCenter(to: fromVC.view)
-        movingView.layer.cornerRadius = fromImageView.layer.cornerRadius
         transitionContext.containerView.addSubviews(toVC.view, movingView)
 
         let movingTitleView = UILabel()
-        movingTitleView.text = fromTitleView.text
-        movingTitleView.frame.size = fromTitleView.frame.size
+        movingTitleView.copyproperties(from: fromTitleView)
         movingTitleView.center = fromTitleView.convertCenter(to: fromVC.view)
-        movingTitleView.font = fromTitleView.font
-        movingTitleView.textColor = fromTitleView.textColor
         transitionContext.containerView.addSubviews(toVC.view, movingTitleView)
 
         let movingSubtitleView = UILabel()
-        movingSubtitleView.text = fromSubtitleView.text
-        movingSubtitleView.frame.size = fromSubtitleView.frame.size
+        movingSubtitleView.copyproperties(from: fromSubtitleView)
         movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
-        movingSubtitleView.font = fromSubtitleView.font
-        movingSubtitleView.textColor = fromSubtitleView.textColor
         transitionContext.containerView.addSubviews(toVC.view, movingSubtitleView)
 
         // Do not use "isHidden" not to animate in stackview
@@ -85,19 +78,14 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
 
-            movingView.frame.size = toImageView.displayingImageSize
+            movingView.copyproperties(from: toImageView)
             movingView.center = toImageView.convertCenter(to: toVC.view)
-            movingView.layer.cornerRadius = toImageView.layer.cornerRadius
 
-            movingTitleView.frame.size = toTitleView.frame.size
+            movingTitleView.copyproperties(from: toTitleView)
             movingTitleView.center = toTitleView.convertCenter(to: toVC.view)
-            movingTitleView.font = toTitleView.font
-            movingTitleView.textColor = toTitleView.textColor
 
-            movingSubtitleView.frame.size = toSubtitleView.frame.size
+            movingSubtitleView.copyproperties(from: toSubtitleView)
             movingSubtitleView.center = toSubtitleView.convertCenter(to: toVC.view)
-            movingSubtitleView.font = toSubtitleView.font
-            movingSubtitleView.textColor = toSubtitleView.textColor
 
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
@@ -116,5 +104,21 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
 
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
+    }
+}
+
+extension UIImageView {
+    func copyproperties(from imageView: UIImageView) {
+        frame.size = imageView.displayingImageSize
+        layer.cornerRadius = imageView.layer.cornerRadius
+    }
+}
+
+extension UILabel {
+    func copyproperties(from label: UILabel) {
+        text = label.text
+        frame.size = label.frame.size
+        textColor = label.textColor
+        font = label.font
     }
 }
