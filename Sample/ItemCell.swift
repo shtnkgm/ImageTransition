@@ -26,5 +26,7 @@ class ItemCell: UICollectionViewCell {
         imageView.image = item.image
         titleLabel.text = item.title
         priceLabel.text = item.priceString
+        
+        layer.cornerRadius = 20
     }
 }

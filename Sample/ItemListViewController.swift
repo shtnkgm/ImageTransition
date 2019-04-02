@@ -11,8 +11,8 @@ import ImageTransition
 
 class ItemListViewController: UIViewController {
     
-    private let margin: CGFloat = 1
-    private let column: CGFloat = 3
+    private let margin: CGFloat = 20
+    private let column: CGFloat = 2
     
     private let items: [Item] = ["kiwi", "strawberry", "apple", "orange", "tomato", "lemon"].map { Item(title: $0) }
     
