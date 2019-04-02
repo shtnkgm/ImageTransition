@@ -140,6 +140,10 @@ extension UIView {
         frame.size = view.frame.size
         layer.cornerRadius = view.layer.cornerRadius
         backgroundColor = view.backgroundColor
+        //        clipsToBounds = view.clipsToBounds
+        //        layer.shadowRadius = view.layer.shadowRadius
+        //        layer.shadowOffset = view.layer.shadowOffset
+        //        layer.shadowOpacity = view.layer.shadowOpacity
     }
 }
 
@@ -156,7 +160,5 @@ extension UILabel {
         text = label.text
         frame.size = label.frame.size
         textColor = label.textColor
-        // font = label.font
-        // backgroundColor = label.backgroundColor
     }
 }

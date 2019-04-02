@@ -39,7 +39,7 @@ class ItemListViewController: UIViewController {
 extension ItemListViewController: ImageTransitionable {
     var baseViewForTransition: UIView? {
         guard let selectedCell = selectedCell() else { return nil }
-        return selectedCell
+        return selectedCell.contentView
     }
     
     var titleViewForTransition: UILabel? {
