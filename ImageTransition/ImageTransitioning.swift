@@ -87,7 +87,10 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
 
         let duration = transitionDuration(using: transitionContext)
         let options: UIView.AnimationOptions = animationOptions
-        UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
+
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: options, animations: {
+
+            // UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
 
             let titleScale = toTitleView.font.pointSize / fromTitleView.font.pointSize
