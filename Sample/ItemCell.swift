@@ -32,8 +32,8 @@ class ItemCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 20
         
         clipsToBounds = false
-        layer.shadowRadius = 10
+        layer.shadowRadius = 12
         layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.2
     }
 }
