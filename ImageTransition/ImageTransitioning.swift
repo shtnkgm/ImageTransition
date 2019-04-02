@@ -27,6 +27,9 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         guard let fromImageTransitionable = fromVC as? ImageTransitionable else { assertionFailure("fromVC not conform to Protocol 'ImageTransitionable'"); return }
         guard let toImageTransitionable = toVC as? ImageTransitionable else { assertionFailure("toVC not conform to Protocol 'ImageTransitionable'"); return }
 
+        guard let fromBaseView = fromImageTransitionable.baseViewForTransition else { assertionFailure("fromBaseView is nil"); return }
+        guard let toBaseView = toImageTransitionable.baseViewForTransition else { assertionFailure("toBaseView is nil"); return }
+
         guard let fromImageView = fromImageTransitionable.imageViewForTransition else { assertionFailure("fromImageView is nil"); return }
         guard let toImageView = toImageTransitionable.imageViewForTransition else { assertionFailure("toImageView is nil"); return }
 
@@ -39,12 +42,16 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         guard let fromImage = fromImageView.image else { assertionFailure("fromImage is nil"); return }
         guard let toImage = toImageView.image else { assertionFailure("toImage is nil"); return }
 
+        let movingBaseView = UIView()
+        movingBaseView.copyproperties(from: fromBaseView)
+        movingBaseView.center = fromBaseView.convertCenter(to: fromVC.view)
+
         // Use image with larger size
-        let movingView = UIImageView(image: fromImage.largerCompared(with: toImage))
-        movingView.copyproperties(from: fromImageView)
-        movingView.clipsToBounds = true
-        movingView.contentMode = .scaleAspectFill
-        movingView.center = fromImageView.convertCenter(to: fromVC.view)
+        let movingImageView = UIImageView(image: fromImage.largerCompared(with: toImage))
+        movingImageView.copyproperties(from: fromImageView)
+        movingImageView.clipsToBounds = true
+        movingImageView.contentMode = .scaleAspectFill
+        movingImageView.center = fromImageView.convertCenter(to: fromVC.view)
 
         let movingTitleView = UILabel()
         movingTitleView.copyproperties(from: fromTitleView)
@@ -54,9 +61,12 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingSubtitleView.copyproperties(from: fromSubtitleView)
         movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
 
-        transitionContext.containerView.addSubviews(toVC.view, movingView, movingTitleView, movingSubtitleView)
+        transitionContext.containerView.addSubviews(toVC.view, movingBaseView, movingImageView, movingTitleView, movingSubtitleView)
 
         // Do not use "isHidden" not to animate in stackview
+        fromBaseView.alpha = 0.0
+        toBaseView.alpha = 0.0
+
         fromImageView.alpha = 0.0
         toImageView.alpha = 0.0
 
@@ -77,8 +87,11 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
 
-            movingView.copyproperties(from: toImageView)
-            movingView.center = toImageView.convertCenter(to: toVC.view)
+            movingBaseView.copyproperties(from: toBaseView)
+            movingBaseView.center = toBaseView.convertCenter(to: toVC.view)
+
+            movingImageView.copyproperties(from: toImageView)
+            movingImageView.center = toImageView.convertCenter(to: toVC.view)
 
             movingTitleView.copyproperties(from: toTitleView)
             movingTitleView.center = toTitleView.convertCenter(to: toVC.view)
@@ -88,6 +101,9 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
 
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
+            fromBaseView.alpha = 1.0
+            toBaseView.alpha = 1.0
+
             fromImageView.alpha = 1.0
             toImageView.alpha = 1.0
 
@@ -97,7 +113,8 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             fromSubtitleView.alpha = 1.0
             toSubtitleView.alpha = 1.0
 
-            movingView.removeFromSuperview()
+            movingBaseView.removeFromSuperview()
+            movingImageView.removeFromSuperview()
             movingTitleView.removeFromSuperview()
             movingSubtitleView.removeFromSuperview()
 
@@ -106,10 +123,19 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
     }
 }
 
+extension UIView {
+    func copyproperties(from view: UIView) {
+        frame.size = view.frame.size
+        layer.cornerRadius = view.layer.cornerRadius
+        backgroundColor = view.backgroundColor
+    }
+}
+
 extension UIImageView {
     func copyproperties(from imageView: UIImageView) {
         frame.size = imageView.displayingImageSize
         layer.cornerRadius = imageView.layer.cornerRadius
+        // backgroundColor = imageView.backgroundColor
     }
 }
 
@@ -119,5 +145,6 @@ extension UILabel {
         frame.size = label.frame.size
         textColor = label.textColor
         font = label.font
+        // backgroundColor = label.backgroundColor
     }
 }

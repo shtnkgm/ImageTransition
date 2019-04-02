@@ -9,6 +9,7 @@
 import UIKit
 
 public protocol ImageTransitionable {
+    var baseViewForTransition: UIView? { get }
     var imageViewForTransition: UIImageView? { get }
     var titleViewForTransition: UILabel? { get }
     var subtitleViewForTransition: UILabel? { get }
