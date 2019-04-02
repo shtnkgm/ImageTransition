@@ -26,8 +26,16 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         guard let toVC = transitionContext.viewController(forKey: .to) else { assertionFailure("toVC is nil"); return }
         guard let fromImageTransitionable = fromVC as? ImageTransitionable else { assertionFailure("fromVC not conform to Protocol 'ImageTransitionable'"); return }
         guard let toImageTransitionable = toVC as? ImageTransitionable else { assertionFailure("toVC not conform to Protocol 'ImageTransitionable'"); return }
+
         guard let fromImageView = fromImageTransitionable.imageViewForTransition else { assertionFailure("fromImageView is nil"); return }
         guard let toImageView = toImageTransitionable.imageViewForTransition else { assertionFailure("toImageView is nil"); return }
+
+        guard let fromTitleView = fromImageTransitionable.titleViewForTransition else { assertionFailure("fromTitleView is nil"); return }
+        guard let toTitleView = toImageTransitionable.titleViewForTransition else { assertionFailure("toTitleView is nil"); return }
+
+        guard let fromSubtitleView = fromImageTransitionable.subtitleViewForTransition else { assertionFailure("fromSubtitleView is nil"); return }
+        guard let toSubtitleView = toImageTransitionable.subtitleViewForTransition else { assertionFailure("toSubtitleView is nil"); return }
+
         guard let fromImage = fromImageView.image else { assertionFailure("fromImage is nil"); return }
         guard let toImage = toImageView.image else { assertionFailure("toImage is nil"); return }
 
@@ -38,12 +46,32 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingView.frame.size = fromImageView.displayingImageSize
         movingView.center = fromImageView.convertCenter(to: fromVC.view)
         movingView.layer.cornerRadius = fromImageView.layer.cornerRadius
-
         transitionContext.containerView.addSubviews(toVC.view, movingView)
+
+        let movingTitleView = UILabel()
+        movingTitleView.text = fromTitleView.text
+        movingTitleView.frame.size = fromTitleView.frame.size
+        movingTitleView.center = fromTitleView.convertCenter(to: fromVC.view)
+        movingTitleView.font = fromTitleView.font
+        transitionContext.containerView.addSubviews(toVC.view, movingTitleView)
+
+        let movingSubtitleView = UILabel()
+        movingSubtitleView.text = fromSubtitleView.text
+        movingSubtitleView.frame.size = fromSubtitleView.frame.size
+        movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
+        movingSubtitleView.font = fromSubtitleView.font
+        transitionContext.containerView.addSubviews(toVC.view, movingSubtitleView)
 
         // Do not use "isHidden" not to animate in stackview
         fromImageView.alpha = 0.0
         toImageView.alpha = 0.0
+
+        fromTitleView.alpha = 0.0
+        toTitleView.alpha = 0.0
+
+        fromSubtitleView.alpha = 0.0
+        toSubtitleView.alpha = 0.0
+
         toVC.view.alpha = 0.0
 
         // To calculate displayImageSize correctly, recalculate the layout
@@ -57,11 +85,30 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             movingView.frame.size = toImageView.displayingImageSize
             movingView.center = toImageView.convertCenter(to: toVC.view)
             movingView.layer.cornerRadius = toImageView.layer.cornerRadius
+
+            movingTitleView.frame.size = toTitleView.frame.size
+            movingTitleView.center = toTitleView.convertCenter(to: toVC.view)
+            movingTitleView.font = toTitleView.font
+
+            movingSubtitleView.frame.size = toTitleView.frame.size
+            movingSubtitleView.center = toTitleView.convertCenter(to: toVC.view)
+            movingSubtitleView.font = toTitleView.font
+
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
             fromImageView.alpha = 1.0
             toImageView.alpha = 1.0
+
+            fromTitleView.alpha = 1.0
+            toTitleView.alpha = 1.0
+
+            fromSubtitleView.alpha = 1.0
+            toSubtitleView.alpha = 1.0
+
             movingView.removeFromSuperview()
+            movingTitleView.removeFromSuperview()
+            movingSubtitleView.removeFromSuperview()
+
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }

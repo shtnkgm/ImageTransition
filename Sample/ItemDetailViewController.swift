@@ -50,6 +50,14 @@ final class ItemDetailViewController: UIViewController, UIViewControllerTransiti
 }
 
 extension ItemDetailViewController: ImageTransitionable {
+    var titleViewForTransition: UILabel? {
+        return titleLabel
+    }
+    
+    var subtitleViewForTransition: UILabel? {
+        return priceLabel
+    }
+    
     var imageViewForTransition: UIImageView? {
         return imageView
     }
