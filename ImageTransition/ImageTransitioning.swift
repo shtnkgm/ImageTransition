@@ -54,10 +54,12 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         movingImageView.center = fromImageView.convertCenter(to: fromVC.view)
 
         let movingTitleView = UILabel()
+        movingTitleView.font = fromTitleView.font
         movingTitleView.copyproperties(from: fromTitleView)
         movingTitleView.center = fromTitleView.convertCenter(to: fromVC.view)
 
         let movingSubtitleView = UILabel()
+        movingSubtitleView.font = fromSubtitleView.font
         movingSubtitleView.copyproperties(from: fromSubtitleView)
         movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
 
@@ -86,6 +88,12 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         let options: UIView.AnimationOptions = animationOptions
         UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
+
+            let titleScale = toTitleView.font.pointSize / fromTitleView.font.pointSize
+            movingTitleView.transform = CGAffineTransform(scaleX: titleScale, y: titleScale)
+
+            let subtitleScale = toSubtitleView.font.pointSize / fromSubtitleView.font.pointSize
+            movingSubtitleView.transform = CGAffineTransform(scaleX: subtitleScale, y: subtitleScale)
 
             movingBaseView.copyproperties(from: toBaseView)
             movingBaseView.center = toBaseView.convertCenter(to: toVC.view)
@@ -144,7 +152,7 @@ extension UILabel {
         text = label.text
         frame.size = label.frame.size
         textColor = label.textColor
-        font = label.font
+        // font = label.font
         // backgroundColor = label.backgroundColor
     }
 }
