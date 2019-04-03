@@ -26,7 +26,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         let fromViews: [UIView] = ([fromVC.view] + fromVC.view.recursiveSubviews).filter { $0.animationId != nil }
         let toViews: [UIView] = ([toVC.view] + toVC.view.recursiveSubviews).filter { $0.animationId != nil }
 
-        let viewPairs: [(moving: UIView, from: UIView, to: UIView)] = fromViews.compactMap { from in
+        let viewSets: [(moving: UIView, from: UIView, to: UIView)] = fromViews.compactMap { from in
 
             guard let to = toViews.first(where: { $0.animationId == from.animationId }) else {
                 return nil
@@ -35,40 +35,34 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             if let from = from as? UILabel {
                 let label = UILabel()
                 label.font = from.font
-                label.copyproperties(from: from)
-                label.setCenter(of: from, in: fromVC.view)
+                label.setProperties(of: from, parentView: fromVC.view)
                 return (label, from, to)
             }
 
             if let from = from as? UIImageView {
                 let imageView = UIImageView()
-                imageView.image = from.image
-                imageView.copyproperties(from: from)
-                imageView.clipsToBounds = true
-                imageView.contentMode = .scaleAspectFill
-                imageView.setCenter(of: from, in: fromVC.view)
+                imageView.setProperties(of: from, parentView: fromVC.view)
                 return (imageView, from, to)
             }
 
             let view = UIView()
-            view.copyproperties(from: from)
-            view.setCenter(of: from, in: fromVC.view)
+            view.setProperties(of: from, parentView: fromVC.view)
             return (view, from, to)
         }
 
         transitionContext.containerView.backgroundColor = .white
 
         transitionContext.containerView.addSubview(toVC.view)
-        transitionContext.containerView.addSubviews(viewPairs.map { $0.moving })
+        transitionContext.containerView.addSubviews(viewSets.map { $0.moving })
 
-        // Do not use "isHidden" not to animate in stackview
-        viewPairs.forEach {
+        // not use "isHidden" to animate in stackview
+        viewSets.forEach {
             $0.from.alpha = 0
             $0.to.alpha = 0
         }
         toVC.view.alpha = 0.0
 
-        // To calculate displayImageSize correctly, recalculate the layout
+        // to calculate displayImageSize correctly, recalculate the layout
         toVC.view.setNeedsLayout()
         toVC.view.layoutIfNeeded()
 
@@ -80,33 +74,30 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
                        animations: {
                         toVC.view.alpha = 1.0
 
-                        viewPairs.forEach {
+                        viewSets.forEach {
                             if let to = $0.to as? UILabel, let from = $0.from as? UILabel {
                                 let scale = to.font.pointSize / from.font.pointSize
                                 ($0.moving as? UILabel)?.transform = CGAffineTransform(scaleX: scale, y: scale)
-                                ($0.moving as? UILabel)?.copyproperties(from: to)
-                                ($0.moving as? UILabel)?.setCenter(of: to, in: toVC.view)
+                                ($0.moving as? UILabel)?.setProperties(of: to, parentView: toVC.view)
                                 return
                             }
 
                             if let to = $0.to as? UIImageView {
-                                ($0.moving as? UIImageView)?.copyproperties(from: to)
-                                ($0.moving as? UIImageView)?.setCenter(of: to, in: toVC.view)
+                                ($0.moving as? UIImageView)?.setProperties(of: to, parentView: toVC.view)
                                 return
                             }
 
-                            $0.moving.copyproperties(from: $0.to)
-                            $0.moving.setCenter(of: $0.to, in: toVC.view)
+                            $0.moving.setProperties(of: $0.to, parentView: toVC.view)
                         }
 
         }, completion: { _ in
-            // Do not use "isHidden" not to animate in stackview
-            viewPairs.forEach {
+            // not to use "isHidden" to animate in stackview
+            viewSets.forEach {
                 $0.from.alpha = 1
                 $0.to.alpha = 1
             }
 
-            viewPairs.forEach {
+            viewSets.forEach {
                 $0.moving.removeFromSuperview()
             }
 
@@ -115,8 +106,8 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
     }
 }
 
-extension UIView {
-    func copyproperties(from view: UIView) {
+fileprivate extension UIView {
+    func setProperties(of view: UIView, parentView: UIView) {
         frame.size = view.frame.size
         layer.cornerRadius = view.layer.cornerRadius
         backgroundColor = view.backgroundColor
@@ -124,21 +115,29 @@ extension UIView {
         layer.shadowRadius = view.layer.shadowRadius
         layer.shadowOffset = view.layer.shadowOffset
         layer.shadowOpacity = view.layer.shadowOpacity
+        setCenter(of: view, in: parentView)
     }
 }
 
-extension UIImageView {
-    func copyproperties(from imageView: UIImageView) {
-        frame.size = imageView.displayingImageSize
-        layer.cornerRadius = imageView.layer.cornerRadius
-        backgroundColor = imageView.backgroundColor
+fileprivate extension UIImageView {
+    func setProperties(of view: UIImageView, parentView: UIView) {
+        image = view.image
+        frame.size = view.displayingImageSize
+        layer.cornerRadius = view.layer.cornerRadius
+        backgroundColor = view.backgroundColor
+        setCenter(of: view, in: parentView)
+        // not to copy "clipsToBounds"
+        clipsToBounds = true
+        // not to copy "contentMode"
+        contentMode = .scaleAspectFill
     }
 }
 
-extension UILabel {
-    func copyproperties(from label: UILabel) {
-        text = label.text
-        frame.size = label.frame.size
-        textColor = label.textColor
+fileprivate extension UILabel {
+    func setProperties(of view: UILabel, parentView: UIView) {
+        text = view.text
+        frame.size = view.frame.size
+        textColor = view.textColor
+        setCenter(of: view, in: parentView)
     }
 }
