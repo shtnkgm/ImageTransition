@@ -49,8 +49,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
 
                         viewSets.forEach {
                             if let to = $0.to as? UILabel, let from = $0.from as? UILabel {
-                                let scale = to.font.pointSize / from.font.pointSize
-                                ($0.moving as? UILabel)?.transform = CGAffineTransform(scaleX: scale, y: scale)
+                                ($0.moving as? UILabel)?.transform = self.makeAffineTransform(fromView: from, toView: to)
                                 ($0.moving as? UILabel)?.setProperties(of: to, parentView: toVC.view)
                                 return
                             }
@@ -106,6 +105,12 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             view.setProperties(of: from, parentView: fromView)
             return (view, from, to)
         }
+    }
+
+    private func makeAffineTransform(fromView: UIView, toView: UIView) -> CGAffineTransform {
+        let fromSize = fromView.intrinsicContentSize
+        let toSize = toView.intrinsicContentSize
+        return CGAffineTransform(scaleX: toSize.width / fromSize.width, y: toSize.height / fromSize.height)
     }
 }
 
