@@ -24,7 +24,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         guard let toVC = transitionContext.viewController(forKey: .to) else { assertionFailure("toVC is nil"); return }
         let viewSets = makeViewSets(fromView: fromVC.view, toView: toVC.view)
 
-        transitionContext.containerView.backgroundColor = .red//.white
+        transitionContext.containerView.backgroundColor = .white
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.addSubviews(viewSets.map { $0.moving })
 

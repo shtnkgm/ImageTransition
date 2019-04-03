@@ -15,7 +15,7 @@ public struct ImageTransitionConfig {
     let initialSpringVelocity: CGFloat
     let options: UIView.AnimationOptions
 
-    public init(duration: TimeInterval = 0.5,
+    public init(duration: TimeInterval = 2.0,
                 delay: TimeInterval = 0,
                 dampingRatio: CGFloat = 0.7,
                 initialSpringVelocity: CGFloat = 0,
