@@ -41,13 +41,14 @@ extension ItemListViewController: UICollectionViewDelegate {
         guard let selectedCell = selectedCell(),
         let item = selectedCell.item else { return }
         
-        selectedCell.animationId = "shadow"
-        selectedCell.contentView.animationId = "base"
-        selectedCell.imageView.animationId = "image"
-        selectedCell.titleLabel.animationId = "title"
-        selectedCell.priceLabel.animationId = "subtitle"
+        let index = indexPath.row
+        selectedCell.animationId = "\(index)_shadow"
+        selectedCell.contentView.animationId = "\(index)_base"
+        selectedCell.imageView.animationId = "\(index)_image"
+        selectedCell.titleLabel.animationId = "\(index)_title"
+        selectedCell.priceLabel.animationId = "\(index)_subtitle"
 
-        let itemDetailViewController = ItemDetailViewController(item: item)
+        let itemDetailViewController = ItemDetailViewController(item: item, index: indexPath.row)
         ImageTransitionDelegate.shared.pushDuration = 1//0.5
         ImageTransitionDelegate.shared.popDuration = 1//0.5
         navigationController?.delegate = ImageTransitionDelegate.shared

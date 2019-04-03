@@ -16,11 +16,13 @@ final class ItemDetailViewController: UIViewController, UIViewControllerTransiti
     @IBOutlet private weak var priceLabel: UILabel!
     
     private let item: Item
+    private let index: Int
     
     var nibDidLoad: () -> Void = {}
     
-    init(item: Item) {
+    init(item: Item, index: Int) {
         self.item = item
+        self.index = index
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,11 +37,11 @@ final class ItemDetailViewController: UIViewController, UIViewControllerTransiti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.animationId = "shadow"
-        baseView.animationId = "base"
-        imageView.animationId = "image"
-        titleLabel.animationId = "title"
-        priceLabel.animationId = "subtitle"
+        view.animationId = "\(index)_shadow"
+        baseView.animationId = "\(index)_base"
+        imageView.animationId = "\(index)_image"
+        titleLabel.animationId = "\(index)_title"
+        priceLabel.animationId = "\(index)_subtitle"
         
         imageView.image = item.image
         titleLabel.text = item.title
