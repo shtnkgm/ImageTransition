@@ -24,3 +24,20 @@ internal extension UIView {
         }
     }
 }
+
+private var animationIdKey: UInt8 = 0
+
+extension UIView {
+    var animationId: String? {
+        get {
+            guard let object = objc_getAssociatedObject(self, &animationIdKey) as? String else {
+                return nil
+            }
+            return object
+        }
+        set {
+            objc_setAssociatedObject(self, &animationIdKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+
+}
