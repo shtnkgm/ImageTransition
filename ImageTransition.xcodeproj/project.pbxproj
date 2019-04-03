@@ -16,6 +16,7 @@
 		974D500A2246853B0015B768 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D50082246853B0015B768 /* ItemCell.swift */; };
 		974D500B2246853B0015B768 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974D50092246853B0015B768 /* ItemCell.xib */; };
 		974D500D224694910015B768 /* ItemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974D500C224694910015B768 /* ItemDetailViewController.xib */; };
+		97A774342255524100DA6D48 /* ImageTransitionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A774332255524100DA6D48 /* ImageTransitionConfig.swift */; };
 		DA4B56BE216AA51D0046FC72 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DA4B56BD216AA51D0046FC72 /* README.md */; };
 		DA5486EF21525AEB00E0899D /* ImageTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5486E521525AEB00E0899D /* ImageTransition.framework */; };
 		DA5486F621525AEB00E0899D /* ImageTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = DA5486E821525AEB00E0899D /* ImageTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,6 +64,7 @@
 		974D50082246853B0015B768 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		974D50092246853B0015B768 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		974D500C224694910015B768 /* ItemDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailViewController.xib; sourceTree = "<group>"; };
+		97A774332255524100DA6D48 /* ImageTransitionConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransitionConfig.swift; sourceTree = "<group>"; };
 		DA4B56BD216AA51D0046FC72 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DA5486E521525AEB00E0899D /* ImageTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5486E821525AEB00E0899D /* ImageTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageTransition.h; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				DA5486FF215263A900E0899D /* ImageTransitioning.swift */,
 				DA548701215263B400E0899D /* ImageTransitionDelegate.swift */,
 				9709174C22471D5C00803C56 /* InteractiveTransition.swift */,
+				97A774332255524100DA6D48 /* ImageTransitionConfig.swift */,
 				DA548705215263C800E0899D /* UIImageView+.swift */,
 				DA548707215263DB00E0899D /* UIView+.swift */,
 				DA548709215263E500E0899D /* UIImage+.swift */,
@@ -360,6 +363,7 @@
 			files = (
 				DA548706215263C800E0899D /* UIImageView+.swift in Sources */,
 				DA548700215263A900E0899D /* ImageTransitioning.swift in Sources */,
+				97A774342255524100DA6D48 /* ImageTransitionConfig.swift in Sources */,
 				9709174D22471D5C00803C56 /* InteractiveTransition.swift in Sources */,
 				DA54870A215263E500E0899D /* UIImage+.swift in Sources */,
 				DA548702215263B400E0899D /* ImageTransitionDelegate.swift in Sources */,

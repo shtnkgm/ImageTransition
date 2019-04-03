@@ -49,8 +49,8 @@ extension ItemListViewController: UICollectionViewDelegate {
         selectedCell.priceLabel.animationId = "\(index)_subtitle"
 
         let itemDetailViewController = ItemDetailViewController(item: item, index: indexPath.row)
-        ImageTransitionDelegate.shared.pushDuration = 1//0.5
-        ImageTransitionDelegate.shared.popDuration = 1//0.5
+        ImageTransitionDelegate.shared.pushConfig = ImageTransitionConfig()
+        ImageTransitionDelegate.shared.popConfig = ImageTransitionConfig()
         navigationController?.delegate = ImageTransitionDelegate.shared
         navigationController?.pushViewController(itemDetailViewController, animated: true)
     }

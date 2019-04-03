@@ -10,15 +10,11 @@ import UIKit
 
 public final class ImageTransitionDelegate: NSObject {
     public static let shared = ImageTransitionDelegate()
+    public var presentConfig = ImageTransitionConfig()
+    public var dismissConfig = ImageTransitionConfig()
+    public var pushConfig = ImageTransitionConfig()
+    public var popConfig = ImageTransitionConfig()
 
-    public var presentDuration: TimeInterval = 0.375
-    public var dismissDuration: TimeInterval = 0.375
-    public var pushDuration: TimeInterval = 0.375
-    public var popDuration: TimeInterval = 0.375
-    public var presentAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
-    public var dismissAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
-    public var pushAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
-    public var popAnimationOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseInOut]
     private let interactiveTransition = InteractiveTransition()
 
     private override init() { }
@@ -32,11 +28,11 @@ extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController,
                                     presenting: UIViewController,
                                     source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ImageTransitioning(duration: presentDuration, animationOptions: presentAnimationOptions)
+        return ImageTransitioning(config: presentConfig)
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
+        return ImageTransitioning(config: dismissConfig)
     }
 
     public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
@@ -53,9 +49,9 @@ extension ImageTransitionDelegate: UINavigationControllerDelegate {
         case .none:
             return nil
         case .pop:
-            return ImageTransitioning(duration: popDuration, animationOptions: popAnimationOptions)
+            return ImageTransitioning(config: popConfig)
         case .push:
-            return ImageTransitioning(duration: pushDuration, animationOptions: pushAnimationOptions)
+            return ImageTransitioning(config: pushConfig)
         }
     }
 

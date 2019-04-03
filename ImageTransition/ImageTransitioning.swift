@@ -9,16 +9,14 @@
 import UIKit
 
 internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
-    private let duration: TimeInterval
-    private let animationOptions: UIView.AnimationOptions
+    private let config: ImageTransitionConfig
 
-    internal init(duration: TimeInterval, animationOptions: UIView.AnimationOptions) {
-        self.duration = duration
-        self.animationOptions = animationOptions
+    internal init(config: ImageTransitionConfig) {
+        self.config = config
     }
 
     internal func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return config.duration
     }
 
     internal func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -74,32 +72,32 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         toVC.view.setNeedsLayout()
         toVC.view.layoutIfNeeded()
 
-        let duration = transitionDuration(using: transitionContext)
-        let options: UIView.AnimationOptions = animationOptions
+        UIView.animate(withDuration: transitionDuration(using: transitionContext),
+                       delay: config.delay,
+                       usingSpringWithDamping: config.dampingRatio,
+                       initialSpringVelocity: config.initialSpringVelocity,
+                       options: config.options,
+                       animations: {
+                        toVC.view.alpha = 1.0
 
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: options, animations: {
+                        viewPairs.forEach {
+                            if let to = $0.to as? UILabel, let from = $0.from as? UILabel {
+                                let scale = to.font.pointSize / from.font.pointSize
+                                ($0.moving as? UILabel)?.transform = CGAffineTransform(scaleX: scale, y: scale)
+                                ($0.moving as? UILabel)?.copyproperties(from: to)
+                                ($0.moving as? UILabel)?.setCenter(of: to, in: toVC.view)
+                                return
+                            }
 
-            // UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
-            toVC.view.alpha = 1.0
+                            if let to = $0.to as? UIImageView {
+                                ($0.moving as? UIImageView)?.copyproperties(from: to)
+                                ($0.moving as? UIImageView)?.setCenter(of: to, in: toVC.view)
+                                return
+                            }
 
-            viewPairs.forEach {
-                if let to = $0.to as? UILabel, let from = $0.from as? UILabel {
-                    let scale = to.font.pointSize / from.font.pointSize
-                    ($0.moving as? UILabel)?.transform = CGAffineTransform(scaleX: scale, y: scale)
-                    ($0.moving as? UILabel)?.copyproperties(from: to)
-                    ($0.moving as? UILabel)?.setCenter(of: to, in: toVC.view)
-                    return
-                }
-
-                if let to = $0.to as? UIImageView {
-                    ($0.moving as? UIImageView)?.copyproperties(from: to)
-                    ($0.moving as? UIImageView)?.setCenter(of: to, in: toVC.view)
-                    return
-                }
-
-                $0.moving.copyproperties(from: $0.to)
-                $0.moving.setCenter(of: $0.to, in: toVC.view)
-            }
+                            $0.moving.copyproperties(from: $0.to)
+                            $0.moving.setCenter(of: $0.to, in: toVC.view)
+                        }
 
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
