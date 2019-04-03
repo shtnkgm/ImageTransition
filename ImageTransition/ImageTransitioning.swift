@@ -78,6 +78,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         })
     }
 
+    /// make view sets having same animation id
     private func makeViewSets(fromView: UIView, toView: UIView) -> [(moving: UIView, from: UIView, to: UIView)] {
         let fromViews: [UIView] = ([fromView] + fromView.recursiveSubviews).filter { $0.animationId != nil }
         let toViews: [UIView] = ([toView] + toView.recursiveSubviews).filter { $0.animationId != nil }
@@ -112,7 +113,7 @@ fileprivate extension UIView {
     func setProperties(of view: UIView, parentView: UIView) {
         frame.size = view.frame.size
         layer.cornerRadius = view.layer.cornerRadius
-        backgroundColor = view.backgroundColor
+        backgroundColor = view.backgroundColor ?? .clear
         clipsToBounds = view.clipsToBounds
         layer.shadowRadius = view.layer.shadowRadius
         layer.shadowOffset = view.layer.shadowOffset
@@ -125,21 +126,29 @@ fileprivate extension UIImageView {
     func setProperties(of view: UIImageView, parentView: UIView) {
         image = view.image
         frame.size = view.displayingImageSize
-        layer.cornerRadius = view.layer.cornerRadius
-        backgroundColor = view.backgroundColor
-        setCenter(of: view, in: parentView)
         // not to copy "clipsToBounds"
         clipsToBounds = true
         // not to copy "contentMode"
         contentMode = .scaleAspectFill
+
+        layer.cornerRadius = view.layer.cornerRadius
+        backgroundColor = view.backgroundColor ?? .clear
+        setCenter(of: view, in: parentView)
     }
 }
 
 fileprivate extension UILabel {
     func setProperties(of view: UILabel, parentView: UIView) {
         text = view.text
-        frame.size = view.frame.size
         textColor = view.textColor
+
+        frame.size = view.frame.size
+        layer.cornerRadius = view.layer.cornerRadius
+        backgroundColor = view.backgroundColor ?? .clear
+        clipsToBounds = view.clipsToBounds
+        layer.shadowRadius = view.layer.shadowRadius
+        layer.shadowOffset = view.layer.shadowOffset
+        layer.shadowOpacity = view.layer.shadowOpacity
         setCenter(of: view, in: parentView)
     }
 }
