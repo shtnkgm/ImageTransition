@@ -23,13 +23,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="63g-oz-8CI">
-                                <rect key="frame" x="8" y="8" width="184" height="234"/>
+                                <rect key="frame" x="14" y="14" width="172" height="222"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SJb-AA-7Ls">
-                                        <rect key="frame" x="0.0" y="0.0" width="184" height="190"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="172" height="178"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ij5-e9-Sda">
-                                        <rect key="frame" x="0.0" y="194" width="184" height="20"/>
+                                        <rect key="frame" x="0.0" y="182" width="172" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="DaH-2q-nKt"/>
                                         </constraints>
@@ -38,7 +38,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dI-Vv-eGc">
-                                        <rect key="frame" x="0.0" y="218" width="184" height="16"/>
+                                        <rect key="frame" x="0.0" y="206" width="172" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="iMq-yB-VZC"/>
                                         </constraints>
@@ -51,10 +51,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="63g-oz-8CI" secondAttribute="bottom" constant="8" id="NnD-Ds-gWd"/>
-                            <constraint firstItem="63g-oz-8CI" firstAttribute="top" secondItem="FbB-jd-iZD" secondAttribute="top" constant="8" id="nq1-OO-Sb8"/>
-                            <constraint firstItem="63g-oz-8CI" firstAttribute="leading" secondItem="FbB-jd-iZD" secondAttribute="leading" constant="8" id="pJf-hd-VZc"/>
-                            <constraint firstAttribute="trailing" secondItem="63g-oz-8CI" secondAttribute="trailing" constant="8" id="sS0-Lg-xb7"/>
+                            <constraint firstAttribute="bottom" secondItem="63g-oz-8CI" secondAttribute="bottom" constant="14" id="NnD-Ds-gWd"/>
+                            <constraint firstItem="63g-oz-8CI" firstAttribute="top" secondItem="FbB-jd-iZD" secondAttribute="top" constant="14" id="nq1-OO-Sb8"/>
+                            <constraint firstItem="63g-oz-8CI" firstAttribute="leading" secondItem="FbB-jd-iZD" secondAttribute="leading" constant="14" id="pJf-hd-VZc"/>
+                            <constraint firstAttribute="trailing" secondItem="63g-oz-8CI" secondAttribute="trailing" constant="14" id="sS0-Lg-xb7"/>
                         </constraints>
                     </view>
                 </subviews>

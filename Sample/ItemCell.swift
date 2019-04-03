@@ -27,6 +27,8 @@ class ItemCell: UICollectionViewCell {
         titleLabel.text = item.title
         priceLabel.text = item.priceString
         
+        imageView.layer.cornerRadius = 8
+        
         contentView.clipsToBounds = true
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 13
