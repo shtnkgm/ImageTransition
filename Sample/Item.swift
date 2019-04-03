@@ -14,7 +14,7 @@ struct Item {
     let price: Float
     
     var priceString: String {
-        return String(format: "US $%.2f", price)
+        return String(format: "$%.2f", price)
     }
 }
 

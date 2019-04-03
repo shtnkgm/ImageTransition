@@ -29,11 +29,11 @@ class ItemCell: UICollectionViewCell {
         
         contentView.clipsToBounds = true
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 13
         
         clipsToBounds = false
-        layer.shadowRadius = 10
+        layer.shadowRadius = 20
         layer.shadowOffset = CGSize(width: 0, height: 4)
-        layer.shadowOpacity = 0.3
+        layer.shadowOpacity = 0.25
     }
 }
