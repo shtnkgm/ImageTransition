@@ -24,73 +24,50 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
     internal func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from) else { assertionFailure("fromVC is nil"); return }
         guard let toVC = transitionContext.viewController(forKey: .to) else { assertionFailure("toVC is nil"); return }
-        guard let fromImageTransitionable = fromVC as? ImageTransitionable else { assertionFailure("fromVC not conform to Protocol 'ImageTransitionable'"); return }
-        guard let toImageTransitionable = toVC as? ImageTransitionable else { assertionFailure("toVC not conform to Protocol 'ImageTransitionable'"); return }
 
-        guard let fromBaseView = fromImageTransitionable.baseViewForTransition else { assertionFailure("fromBaseView is nil"); return }
-        guard let toBaseView = toImageTransitionable.baseViewForTransition else { assertionFailure("toBaseView is nil"); return }
+        let fromViews: [UIView] = ([fromVC.view] + fromVC.view.recursiveSubviews).filter { $0.animationId != nil }
+        let toViews: [UIView] = ([toVC.view] + toVC.view.recursiveSubviews).filter { $0.animationId != nil }
 
-        guard let fromImageView = fromImageTransitionable.imageViewForTransition else { assertionFailure("fromImageView is nil"); return }
-        guard let toImageView = toImageTransitionable.imageViewForTransition else { assertionFailure("toImageView is nil"); return }
+        let viewPairs: [(moving: UIView, from: UIView, to: UIView)] = fromViews.compactMap { from in
 
-        guard let fromTitleView = fromImageTransitionable.titleViewForTransition else { assertionFailure("fromTitleView is nil"); return }
-        guard let toTitleView = toImageTransitionable.titleViewForTransition else { assertionFailure("toTitleView is nil"); return }
+            guard let to = toViews.first(where: { $0.animationId == from.animationId }) else {
+                return nil
+            }
 
-        guard let fromSubtitleView = fromImageTransitionable.subtitleViewForTransition else { assertionFailure("fromSubtitleView is nil"); return }
-        guard let toSubtitleView = toImageTransitionable.subtitleViewForTransition else { assertionFailure("toSubtitleView is nil"); return }
+            if let from = from as? UILabel {
+                let label = UILabel()
+                label.font = from.font
+                label.copyproperties(from: from)
+                label.setCenter(of: from, in: fromVC.view)
+                return (label, from, to)
+            }
 
-        guard let fromImage = fromImageView.image else { assertionFailure("fromImage is nil"); return }
-        guard let toImage = toImageView.image else { assertionFailure("toImage is nil"); return }
+            if let from = from as? UIImageView {
+                let imageView = UIImageView()
+                imageView.image = from.image
+                imageView.copyproperties(from: from)
+                imageView.clipsToBounds = true
+                imageView.contentMode = .scaleAspectFill
+                imageView.setCenter(of: from, in: fromVC.view)
+                return (imageView, from, to)
+            }
 
-        //        let fromMovingViews: [UIView] = fromVC.view.recursiveSubviews.filter { $0.animationId != nil }
-        //        let toMovingViews: [UIView] = toVC.view.recursiveSubviews.filter { $0.animationId != nil }
-        //
-        //        fromMovingViews.forEach {
-        //            switch $0 {
-        //            case is UIImageView:
-        //
-        //            case is UILabel: break
-        //            default: break
-        //            }
-        //        }
-
-        let movingBaseView = UIView()
-        movingBaseView.copyproperties(from: fromBaseView)
-        movingBaseView.center = fromBaseView.convertCenter(to: fromVC.view)
-
-        // Use image with larger size
-        let movingImageView = UIImageView(image: fromImage.largerCompared(with: toImage))
-        movingImageView.copyproperties(from: fromImageView)
-        movingImageView.clipsToBounds = true
-        movingImageView.contentMode = .scaleAspectFill
-        movingImageView.center = fromImageView.convertCenter(to: fromVC.view)
-
-        let movingTitleView = UILabel()
-        movingTitleView.font = fromTitleView.font
-        movingTitleView.copyproperties(from: fromTitleView)
-        movingTitleView.center = fromTitleView.convertCenter(to: fromVC.view)
-
-        let movingSubtitleView = UILabel()
-        movingSubtitleView.font = fromSubtitleView.font
-        movingSubtitleView.copyproperties(from: fromSubtitleView)
-        movingSubtitleView.center = fromSubtitleView.convertCenter(to: fromVC.view)
+            let view = UIView()
+            view.copyproperties(from: from)
+            view.setCenter(of: from, in: fromVC.view)
+            return (view, from, to)
+        }
 
         transitionContext.containerView.backgroundColor = .white
-        transitionContext.containerView.addSubviews(toVC.view, movingBaseView, movingImageView, movingTitleView, movingSubtitleView)
+
+        transitionContext.containerView.addSubview(toVC.view)
+        transitionContext.containerView.addSubviews(viewPairs.map { $0.moving })
 
         // Do not use "isHidden" not to animate in stackview
-        fromBaseView.alpha = 0.0
-        toBaseView.alpha = 0.0
-
-        fromImageView.alpha = 0.0
-        toImageView.alpha = 0.0
-
-        fromTitleView.alpha = 0.0
-        toTitleView.alpha = 0.0
-
-        fromSubtitleView.alpha = 0.0
-        toSubtitleView.alpha = 0.0
-
+        viewPairs.forEach {
+            $0.from.alpha = 0
+            $0.to.alpha = 0
+        }
         toVC.view.alpha = 0.0
 
         // To calculate displayImageSize correctly, recalculate the layout
@@ -105,42 +82,35 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
             // UIView.animate(withDuration: duration, delay: 0, options: options, animations: {
             toVC.view.alpha = 1.0
 
-            let titleScale = toTitleView.font.pointSize / fromTitleView.font.pointSize
-            movingTitleView.transform = CGAffineTransform(scaleX: titleScale, y: titleScale)
+            viewPairs.forEach {
+                if let to = $0.to as? UILabel, let from = $0.from as? UILabel {
+                    let scale = to.font.pointSize / from.font.pointSize
+                    ($0.moving as? UILabel)?.transform = CGAffineTransform(scaleX: scale, y: scale)
+                    ($0.moving as? UILabel)?.copyproperties(from: to)
+                    ($0.moving as? UILabel)?.setCenter(of: to, in: toVC.view)
+                    return
+                }
 
-            let subtitleScale = toSubtitleView.font.pointSize / fromSubtitleView.font.pointSize
-            movingSubtitleView.transform = CGAffineTransform(scaleX: subtitleScale, y: subtitleScale)
+                if let to = $0.to as? UIImageView {
+                    ($0.moving as? UIImageView)?.copyproperties(from: to)
+                    ($0.moving as? UIImageView)?.setCenter(of: to, in: toVC.view)
+                    return
+                }
 
-            movingBaseView.copyproperties(from: toBaseView)
-            movingBaseView.center = toBaseView.convertCenter(to: toVC.view)
-
-            movingImageView.copyproperties(from: toImageView)
-            movingImageView.center = toImageView.convertCenter(to: toVC.view)
-
-            movingTitleView.copyproperties(from: toTitleView)
-            movingTitleView.center = toTitleView.convertCenter(to: toVC.view)
-
-            movingSubtitleView.copyproperties(from: toSubtitleView)
-            movingSubtitleView.center = toSubtitleView.convertCenter(to: toVC.view)
+                $0.moving.copyproperties(from: $0.to)
+                $0.moving.setCenter(of: $0.to, in: toVC.view)
+            }
 
         }, completion: { _ in
             // Do not use "isHidden" not to animate in stackview
-            fromBaseView.alpha = 1.0
-            toBaseView.alpha = 1.0
+            viewPairs.forEach {
+                $0.from.alpha = 1
+                $0.to.alpha = 1
+            }
 
-            fromImageView.alpha = 1.0
-            toImageView.alpha = 1.0
-
-            fromTitleView.alpha = 1.0
-            toTitleView.alpha = 1.0
-
-            fromSubtitleView.alpha = 1.0
-            toSubtitleView.alpha = 1.0
-
-            movingBaseView.removeFromSuperview()
-            movingImageView.removeFromSuperview()
-            movingTitleView.removeFromSuperview()
-            movingSubtitleView.removeFromSuperview()
+            viewPairs.forEach {
+                $0.moving.removeFromSuperview()
+            }
 
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
@@ -152,10 +122,10 @@ extension UIView {
         frame.size = view.frame.size
         layer.cornerRadius = view.layer.cornerRadius
         backgroundColor = view.backgroundColor
-        //        clipsToBounds = view.clipsToBounds
-        //        layer.shadowRadius = view.layer.shadowRadius
-        //        layer.shadowOffset = view.layer.shadowOffset
-        //        layer.shadowOpacity = view.layer.shadowOpacity
+        clipsToBounds = view.clipsToBounds
+        layer.shadowRadius = view.layer.shadowRadius
+        layer.shadowOffset = view.layer.shadowOffset
+        layer.shadowOpacity = view.layer.shadowOpacity
     }
 }
 
@@ -163,7 +133,7 @@ extension UIImageView {
     func copyproperties(from imageView: UIImageView) {
         frame.size = imageView.displayingImageSize
         layer.cornerRadius = imageView.layer.cornerRadius
-        // backgroundColor = imageView.backgroundColor
+        backgroundColor = imageView.backgroundColor
     }
 }
 

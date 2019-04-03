@@ -17,6 +17,16 @@ class ItemCell: UICollectionViewCell {
     
     var item: Item?
     
+    override var isHighlighted: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.3) {
+                self.transform = self.isHighlighted ? .init(scaleX: 0.95, y: 0.95) : .identity
+                self.layer.shadowRadius = self.isHighlighted ? 14 : 20
+                self.layer.shadowOpacity = self.isHighlighted ? 0.3 : 0.25
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -29,13 +39,16 @@ class ItemCell: UICollectionViewCell {
         
         imageView.layer.cornerRadius = 8
         
+        // corner rounded view
         contentView.clipsToBounds = true
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 13
         
+        // shadow view
         clipsToBounds = false
         layer.shadowRadius = 20
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = 0.25
+        backgroundColor = .clear
     }
 }

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemDetailViewController" customModule="Sample" customModuleProvider="target">
             <connections>
+                <outlet property="baseView" destination="NPo-0X-DBR" id="zCd-8U-SPE"/>
                 <outlet property="imageView" destination="1t8-1U-E2y" id="UsB-qh-c2K"/>
                 <outlet property="priceLabel" destination="VPu-U4-nYj" id="3bO-dD-h4K"/>
                 <outlet property="titleLabel" destination="aSe-bH-bh9" id="S7x-fh-Kgq"/>
@@ -23,6 +24,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPo-0X-DBR">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oqJ-Px-Kbo">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
@@ -79,8 +84,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="oqJ-Px-Kbo" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="BG1-5h-JRl"/>
+                <constraint firstItem="NPo-0X-DBR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Euv-Hc-nVn"/>
                 <constraint firstItem="oqJ-Px-Kbo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="GDR-fB-bGe"/>
                 <constraint firstItem="oqJ-Px-Kbo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JWN-E1-pBK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NPo-0X-DBR" secondAttribute="trailing" id="Mpa-zx-aAQ"/>
+                <constraint firstItem="NPo-0X-DBR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="UXV-2d-aPN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="NPo-0X-DBR" secondAttribute="bottom" id="fYB-HX-7kT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oqJ-Px-Kbo" secondAttribute="bottom" id="rhg-12-gxE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

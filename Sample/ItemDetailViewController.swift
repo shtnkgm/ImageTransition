@@ -10,6 +10,7 @@ import UIKit
 import ImageTransition
 
 final class ItemDetailViewController: UIViewController, UIViewControllerTransitioningDelegate {
+    @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
@@ -34,6 +35,11 @@ final class ItemDetailViewController: UIViewController, UIViewControllerTransiti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.animationId = "shadow"
+        baseView.animationId = "base"
+        imageView.animationId = "image"
+        titleLabel.animationId = "title"
+        priceLabel.animationId = "subtitle"
         
         imageView.image = item.image
         titleLabel.text = item.title
@@ -46,23 +52,5 @@ final class ItemDetailViewController: UIViewController, UIViewControllerTransiti
     @objc private func viewDidPan(gesture: UIPanGestureRecognizer) {
         ImageTransitionDelegate.shared.handleGesture(gesture, view: view)
         navigationController?.popViewController(animated: true)
-    }
-}
-
-extension ItemDetailViewController: ImageTransitionable {
-    var baseViewForTransition: UIView? {
-        return view
-    }
-    
-    var titleViewForTransition: UILabel? {
-        return titleLabel
-    }
-    
-    var subtitleViewForTransition: UILabel? {
-        return priceLabel
-    }
-    
-    var imageViewForTransition: UIImageView? {
-        return imageView
     }
 }

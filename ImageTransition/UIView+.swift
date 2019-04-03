@@ -13,16 +13,26 @@ internal extension UIView {
         return subviews + subviews.flatMap { $0.recursiveSubviews }
     }
 
-    internal func convertFrame(to view: UIView) -> CGRect {
+    private func convertFrame(to view: UIView) -> CGRect {
         return convert(bounds, to: view)
     }
 
-    internal func convertCenter(to view: UIView) -> CGPoint {
+    private func convertCenter(to view: UIView) -> CGPoint {
         let frame = convertFrame(to: view)
         return CGPoint(x: frame.minX + frame.width / 2.0, y: frame.minY + frame.height / 2.0)
     }
 
+    internal func setCenter(of view: UIView, in baseView: UIView) {
+        center = view.convertCenter(to: baseView)
+    }
+
     internal func addSubviews(_ views: UIView...) {
+        views.forEach {
+            addSubview($0)
+        }
+    }
+
+    internal func addSubviews(_ views: [UIView]) {
         views.forEach {
             addSubview($0)
         }
@@ -31,7 +41,7 @@ internal extension UIView {
 
 private var animationIdKey: UInt8 = 0
 
-extension UIView {
+public extension UIView {
     var animationId: String? {
         get {
             guard let object = objc_getAssociatedObject(self, &animationIdKey) as? String else {
@@ -43,5 +53,4 @@ extension UIView {
             objc_setAssociatedObject(self, &animationIdKey, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
-
 }

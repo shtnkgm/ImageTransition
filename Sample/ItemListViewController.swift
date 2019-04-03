@@ -36,52 +36,22 @@ class ItemListViewController: UIViewController {
     }
 }
 
-extension ItemListViewController: ImageTransitionable {
-    var baseViewForTransition: UIView? {
-        guard let selectedCell = selectedCell() else { return nil }
-        return selectedCell.contentView
-    }
-    
-    var titleViewForTransition: UILabel? {
-        guard let selectedCell = selectedCell() else { return nil }
-        return selectedCell.titleLabel
-    }
-    
-    var subtitleViewForTransition: UILabel? {
-        guard let selectedCell = selectedCell() else { return nil }
-        return selectedCell.priceLabel
-    }
-    
-    var imageViewForTransition: UIImageView? {
-        guard let selectedCell = selectedCell() else { return nil }
-        return selectedCell.imageView
-    }
-}
-
 extension ItemListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedCell = selectedCell(),
         let item = selectedCell.item else { return }
         
+        selectedCell.animationId = "shadow"
+        selectedCell.contentView.animationId = "base"
+        selectedCell.imageView.animationId = "image"
+        selectedCell.titleLabel.animationId = "title"
+        selectedCell.priceLabel.animationId = "subtitle"
+
         let itemDetailViewController = ItemDetailViewController(item: item)
-        ImageTransitionDelegate.shared.pushDuration = 0.5
-        ImageTransitionDelegate.shared.popDuration = 0.5
+        ImageTransitionDelegate.shared.pushDuration = 1//0.5
+        ImageTransitionDelegate.shared.popDuration = 1//0.5
         navigationController?.delegate = ImageTransitionDelegate.shared
         navigationController?.pushViewController(itemDetailViewController, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        UIView.animate(withDuration: 0.3) {
-            cell.transform = .init(scaleX: 0.95, y: 0.95)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        UIView.animate(withDuration: 0.3) {
-            cell.transform = .identity
-        }
     }
 }
 
