@@ -9,6 +9,10 @@
 import UIKit
 
 internal extension UIView {
+    internal var recursiveSubviews: [UIView] {
+        return subviews + subviews.flatMap { $0.recursiveSubviews }
+    }
+
     internal func convertFrame(to view: UIView) -> CGRect {
         return convert(bounds, to: view)
     }

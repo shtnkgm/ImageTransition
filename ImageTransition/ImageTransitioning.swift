@@ -42,6 +42,18 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
         guard let fromImage = fromImageView.image else { assertionFailure("fromImage is nil"); return }
         guard let toImage = toImageView.image else { assertionFailure("toImage is nil"); return }
 
+        //        let fromMovingViews: [UIView] = fromVC.view.recursiveSubviews.filter { $0.animationId != nil }
+        //        let toMovingViews: [UIView] = toVC.view.recursiveSubviews.filter { $0.animationId != nil }
+        //
+        //        fromMovingViews.forEach {
+        //            switch $0 {
+        //            case is UIImageView:
+        //
+        //            case is UILabel: break
+        //            default: break
+        //            }
+        //        }
+
         let movingBaseView = UIView()
         movingBaseView.copyproperties(from: fromBaseView)
         movingBaseView.center = fromBaseView.convertCenter(to: fromVC.view)
