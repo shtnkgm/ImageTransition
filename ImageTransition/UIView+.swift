@@ -9,6 +9,10 @@
 import UIKit
 
 internal extension UIView {
+    internal var recursiveSubviews: [UIView] {
+        return subviews + subviews.flatMap { $0.recursiveSubviews }
+    }
+
     internal func convertFrame(to view: UIView) -> CGRect {
         return convert(bounds, to: view)
     }
@@ -23,4 +27,21 @@ internal extension UIView {
             addSubview($0)
         }
     }
+}
+
+private var animationIdKey: UInt8 = 0
+
+extension UIView {
+    var animationId: String? {
+        get {
+            guard let object = objc_getAssociatedObject(self, &animationIdKey) as? String else {
+                return nil
+            }
+            return object
+        }
+        set {
+            objc_setAssociatedObject(self, &animationIdKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+
 }
