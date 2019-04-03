@@ -22,36 +22,9 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
     internal func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromVC = transitionContext.viewController(forKey: .from) else { assertionFailure("fromVC is nil"); return }
         guard let toVC = transitionContext.viewController(forKey: .to) else { assertionFailure("toVC is nil"); return }
-
-        let fromViews: [UIView] = ([fromVC.view] + fromVC.view.recursiveSubviews).filter { $0.animationId != nil }
-        let toViews: [UIView] = ([toVC.view] + toVC.view.recursiveSubviews).filter { $0.animationId != nil }
-
-        let viewSets: [(moving: UIView, from: UIView, to: UIView)] = fromViews.compactMap { from in
-
-            guard let to = toViews.first(where: { $0.animationId == from.animationId }) else {
-                return nil
-            }
-
-            if let from = from as? UILabel {
-                let label = UILabel()
-                label.font = from.font
-                label.setProperties(of: from, parentView: fromVC.view)
-                return (label, from, to)
-            }
-
-            if let from = from as? UIImageView {
-                let imageView = UIImageView()
-                imageView.setProperties(of: from, parentView: fromVC.view)
-                return (imageView, from, to)
-            }
-
-            let view = UIView()
-            view.setProperties(of: from, parentView: fromVC.view)
-            return (view, from, to)
-        }
+        let viewSets = makeViewSets(fromView: fromVC.view, toView: toVC.view)
 
         transitionContext.containerView.backgroundColor = .white
-
         transitionContext.containerView.addSubview(toVC.view)
         transitionContext.containerView.addSubviews(viewSets.map { $0.moving })
 
@@ -103,6 +76,35 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
 
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
+    }
+
+    private func makeViewSets(fromView: UIView, toView: UIView) -> [(moving: UIView, from: UIView, to: UIView)] {
+        let fromViews: [UIView] = ([fromView] + fromView.recursiveSubviews).filter { $0.animationId != nil }
+        let toViews: [UIView] = ([toView] + toView.recursiveSubviews).filter { $0.animationId != nil }
+
+        return fromViews.compactMap { from in
+
+            guard let to = toViews.first(where: { $0.animationId == from.animationId }) else {
+                return nil
+            }
+
+            if let from = from as? UILabel {
+                let label = UILabel()
+                label.font = from.font
+                label.setProperties(of: from, parentView: fromView)
+                return (label, from, to)
+            }
+
+            if let from = from as? UIImageView {
+                let imageView = UIImageView()
+                imageView.setProperties(of: from, parentView: fromView)
+                return (imageView, from, to)
+            }
+
+            let view = UIView()
+            view.setProperties(of: from, parentView: fromView)
+            return (view, from, to)
+        }
     }
 }
 
