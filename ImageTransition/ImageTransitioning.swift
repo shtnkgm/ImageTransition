@@ -115,6 +115,7 @@ fileprivate extension UIView {
         layer.cornerRadius = view.layer.cornerRadius
         backgroundColor = view.backgroundColor ?? .clear
         clipsToBounds = view.clipsToBounds
+        layer.shadowColor = view.layer.shadowColor ?? UIColor.black.cgColor
         layer.shadowRadius = view.layer.shadowRadius
         layer.shadowOffset = view.layer.shadowOffset
         layer.shadowOpacity = view.layer.shadowOpacity
@@ -146,6 +147,7 @@ fileprivate extension UILabel {
         layer.cornerRadius = view.layer.cornerRadius
         backgroundColor = view.backgroundColor ?? .clear
         clipsToBounds = view.clipsToBounds
+        layer.shadowColor = view.layer.shadowColor ?? UIColor.black.cgColor
         layer.shadowRadius = view.layer.shadowRadius
         layer.shadowOffset = view.layer.shadowOffset
         layer.shadowOpacity = view.layer.shadowOpacity
