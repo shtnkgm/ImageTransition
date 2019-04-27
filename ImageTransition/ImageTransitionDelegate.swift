@@ -47,6 +47,8 @@ extension ImageTransitionDelegate: UINavigationControllerDelegate {
             return ImageTransitioning(duration: popDuration, animationOptions: popAnimationOptions)
         case .push:
             return ImageTransitioning(duration: pushDuration, animationOptions: pushAnimationOptions)
+        @unknown default:
+            fatalError()
         }
     }
 }
