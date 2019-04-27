@@ -10,7 +10,7 @@ import AVFoundation
 import UIKit
 
 internal extension UIImageView {
-    internal var displayingImageSize: CGSize {
+    var displayingImageSize: CGSize {
         guard let image = image else { return .zero }
         switch contentMode {
         case .scaleAspectFit:
