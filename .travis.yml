@@ -1,6 +1,6 @@
 language: objective-c
 os: osx
-osx_image: xcode10
+osx_image: xcode10.2
 
 env:
   global:
@@ -14,7 +14,7 @@ matrix:
     - env: JOB=xcode SCHEME=ImageTransition SDK=iphonesimulator
 
 branches:
-  only: 
+  only:
     - master
 
 cache:
@@ -24,6 +24,6 @@ cache:
 script:
   - set -o pipefail
   - xcodebuild $ACTION -project $PROJECT -scheme $SCHEME -sdk $SDK -destination 'name=iPhone 8,OS=11.4' -configuration $CONFIG ENABLE_TESTABILITY=YES | xcpretty
-    
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
