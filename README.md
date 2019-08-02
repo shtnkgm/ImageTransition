@@ -31,7 +31,7 @@ Something looks like below:
  
 ### CocoaPods
 
- - Add `pod 'ImageTransition'` to your Cartfile.
+ - Add `pod 'ImageTransition'` to your podfile.
  - Run pod update.
 
 ## Usage
