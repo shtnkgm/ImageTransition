@@ -18,7 +18,7 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
     }
 
     internal func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        duration
     }
 
     internal func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

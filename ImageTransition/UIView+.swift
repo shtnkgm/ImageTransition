@@ -10,7 +10,7 @@ import UIKit
 
 internal extension UIView {
     func convertFrame(to view: UIView) -> CGRect {
-        return convert(bounds, to: view)
+        convert(bounds, to: view)
     }
 
     func convertCenter(to view: UIView) -> CGPoint {

@@ -27,11 +27,11 @@ extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
     public func animationController(forPresented presented: UIViewController,
                                     presenting: UIViewController,
                                     source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ImageTransitioning(duration: presentDuration, animationOptions: presentAnimationOptions)
+        ImageTransitioning(duration: presentDuration, animationOptions: presentAnimationOptions)
     }
 
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
+        ImageTransitioning(duration: dismissDuration, animationOptions: dismissAnimationOptions)
     }
 }
 

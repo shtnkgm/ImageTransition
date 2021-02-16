@@ -10,10 +10,10 @@ import UIKit
 
 internal extension UIImage {
     var area: CGFloat {
-        return size.width * size.height
+        size.width * size.height
     }
 
     func largerCompared(with comparedImage: UIImage) -> UIImage {
-        return area > comparedImage.area ? self : comparedImage
+        area > comparedImage.area ? self : comparedImage
     }
 }
