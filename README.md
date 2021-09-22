@@ -22,15 +22,9 @@ Something looks like below:
 
 ## Installation
 
-### Carthage
-
- - Add `github "shtnkgm/ImageTransition"` to your Cartfile.
- - Run carthage update.
- 
-### CocoaPods
-
- - Add `pod 'ImageTransition'` to your podfile.
- - Run pod update.
+ - Swift Package Manager: `https://github.com/shtnkgm/ImageTransition.git`
+ - Carthage: `github "shtnkgm/ImageTransition"` 
+ - CocoaPods: `pod "ImageTransition"`
 
 ## Usage
 
