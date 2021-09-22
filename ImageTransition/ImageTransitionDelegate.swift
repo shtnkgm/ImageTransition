@@ -24,9 +24,11 @@ public final class ImageTransitionDelegate: NSObject {
 }
 
 extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
-    public func animationController(forPresented presented: UIViewController,
-                                    presenting: UIViewController,
-                                    source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         ImageTransitioning(duration: presentDuration, animationOptions: presentAnimationOptions)
     }
 
@@ -36,17 +38,22 @@ extension ImageTransitionDelegate: UIViewControllerTransitioningDelegate {
 }
 
 extension ImageTransitionDelegate: UINavigationControllerDelegate {
-    public func navigationController(_ navigationController: UINavigationController,
-                                     animationControllerFor operation: UINavigationController.Operation,
-                                     from fromVC: UIViewController,
-                                     to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationController.Operation,
+        from fromVC: UIViewController,
+        to toVC: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
         case .none:
             return nil
+
         case .pop:
             return ImageTransitioning(duration: popDuration, animationOptions: popAnimationOptions)
+
         case .push:
             return ImageTransitioning(duration: pushDuration, animationOptions: pushAnimationOptions)
+
         @unknown default:
             fatalError()
         }

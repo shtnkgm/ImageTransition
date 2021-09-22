@@ -15,6 +15,7 @@ internal extension UIImageView {
         switch contentMode {
         case .scaleAspectFit:
             return AVMakeRect(aspectRatio: image.size, insideRect: bounds).size
+
         default:
             return bounds.size
         }

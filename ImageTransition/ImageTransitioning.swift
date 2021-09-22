@@ -22,12 +22,30 @@ internal final class ImageTransitioning: NSObject, UIViewControllerAnimatedTrans
     }
 
     internal func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: .from) else { assertionFailure("fromVC is nil"); return }
-        guard let toVC = transitionContext.viewController(forKey: .to) else { assertionFailure("toVC is nil"); return }
-        guard let fromImageView = (fromVC as? ImageTransitionable)?.imageViewForTransition else { assertionFailure("fromImageView is nil"); return }
-        guard let toImageView = (toVC as? ImageTransitionable)?.imageViewForTransition else { assertionFailure("toImageView is nil"); return }
-        guard let fromImage = fromImageView.image else { assertionFailure("fromImage is nil"); return }
-        guard let toImage = toImageView.image else { assertionFailure("toImage is nil"); return }
+        guard let fromVC = transitionContext.viewController(forKey: .from) else {
+            assertionFailure("fromVC is nil")
+            return
+        }
+        guard let toVC = transitionContext.viewController(forKey: .to) else {
+            assertionFailure("toVC is nil")
+            return
+        }
+        guard let fromImageView = (fromVC as? ImageTransitionable)?.imageViewForTransition else {
+            assertionFailure("fromImageView is nil")
+            return
+        }
+        guard let toImageView = (toVC as? ImageTransitionable)?.imageViewForTransition else {
+            assertionFailure("toImageView is nil")
+            return
+        }
+        guard let fromImage = fromImageView.image else {
+            assertionFailure("fromImage is nil")
+            return
+        }
+        guard let toImage = toImageView.image else {
+            assertionFailure("toImage is nil")
+            return
+        }
 
         // Use image with larger size
         let movingView = UIImageView(image: fromImage.largerCompared(with: toImage))
