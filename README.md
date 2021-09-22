@@ -96,7 +96,7 @@ For bugs and feature requests, please create an issue.
 
 ## Author
 
- - [@shtnkgm](https://github.com/shtnkgm) / Shota Nakagami
+ - [@shtnkgm](https://github.com/shtnkgm) / Shota Nakagami [![Twitter](https://img.shields.io/twitter/follow/shtnkgm?style=social)](https://twitter.com/shtnkgm)
 
 ## License
 
