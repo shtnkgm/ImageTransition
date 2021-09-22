@@ -4,7 +4,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg)](https://developer.apple.com/swift)
 [![GitHub](https://img.shields.io/github/license/shtnkgm/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition/blob/master/LICENSE)
-[![codebeat badge](https://codebeat.co/badges/fb61c826-2d9c-4931-9be1-3080abc936cd)](https://codebeat.co/projects/github-com-shtnkgm-imagetransition-master)
 
 **ImageTransition** is a library for smooth animation of images during transitions.
 
