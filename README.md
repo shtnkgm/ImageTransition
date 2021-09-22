@@ -2,7 +2,7 @@
 
 [![Cocoapods](https://img.shields.io/cocoapods/v/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Swift Version](https://img.shields.io/badge/Swift-5.0-F16D39.svg)](https://developer.apple.com/swift)
+[![Swift Version](https://img.shields.io/badge/Swift-5.5-F16D39.svg)](https://developer.apple.com/swift)
 [![GitHub](https://img.shields.io/github/license/shtnkgm/ImageTransition.svg)](https://github.com/shtnkgm/ImageTransition/blob/master/LICENSE)
 
 **ImageTransition** is a library for smooth animation of images during transitions.
@@ -86,7 +86,7 @@ ImageTransitionDelegate.shared.popAnimationOptions = [.curveEaseIn]
 
 ## Requirements
 
- - iOS 9.0 or later
+ - iOS 12.0 or later
 
 ## Contributing
 
