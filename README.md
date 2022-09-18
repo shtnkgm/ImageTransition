@@ -80,7 +80,7 @@ ImageTransitionDelegate.shared.popAnimationOptions = [.curveEaseIn]
 
 ## Requirements
 
- - iOS 12.0 or later
+ - iOS 14.0 or later
 
 ## Contributing
 
